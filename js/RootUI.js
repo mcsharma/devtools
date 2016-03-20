@@ -4,6 +4,7 @@ var ReactDOM = require('react-dom');
 var RootUI = React.createClass({
     render: function () {
         var i = 0;
+        var results = this.props.data['results'];
         return (
             <div>
                 <div>
@@ -14,11 +15,12 @@ var RootUI = React.createClass({
                             placeholder="Type text to search"
                         />
                         <input type="submit" value="Search"/>
+                        <span> {results.length} results found!</span>
                     </form>
                 </div>
                 <div>Search Results:</div>
                 <div>
-                    {this.props.data['results'].map(function (result) {
+                    {results.map(function (result) {
                         var parts = result.substr(26).split(":");
                         var url =
                             this.props.data.prefix +

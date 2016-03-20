@@ -7,10 +7,12 @@ if ($q) {
         // Hardcoded sample results for mac. It hard to setup csearch index on mac.
         // so hardcoding some results, so that we can develop on mac.
         $results = array(
-            "/home/mahesh/_thoughtspot/callosum/metadata/src/test/java/com/thoughtspot/callosum/metadata/MetadataHeaderTest.java:23: *" .
-            " @author Mahesh Sharma",
-            "/home/mahesh/_thoughtspot/callosum/metadata/src/test/java/com/thoughtspot/callosum/metadata/MetadataHeaderUnitTest.java:26: *" .
-            " @author Mahesh Sharma",
+            "/home/mahesh/_thoughtspot/callosum/metadata/src/test/java/com/".
+             "thoughtspot/callosum/metadata/MetadataHeaderTest.java:23: *".
+             " @author Mahesh Sharma",
+            "/home/mahesh/_thoughtspot/callosum/metadata/src/test/java/com/".
+             "thoughtspot/callosum/metadata/MetadataHeaderUnitTest.java:26: *".
+             " @author Mahesh Sharma",
         );
     } else {
         $options = "-n";
