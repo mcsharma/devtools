@@ -31,6 +31,7 @@ var RootUI = React.createClass({
                             <div key={i++}>
                                 <div><a href={url}>{text}</a></div>
                                 <div>{parts[2]}</div>
+                                <br />
                             </div>
                         );
                     }.bind(this))}
