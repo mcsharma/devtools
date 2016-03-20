@@ -30,7 +30,12 @@ var RootUI = React.createClass({
                         return (
                             <div key={i++}>
                                 <div><a href={url}>{text}</a></div>
-                                <div>{parts[2]}</div>
+                                <div dangerouslySetInnerHTML={{
+                                    __html: this._highlightQuery(
+                                        parts[2],
+                                        this.props.data['q'])
+                                    }}>
+                                </div>
                                 <br />
                             </div>
                         );
@@ -38,7 +43,13 @@ var RootUI = React.createClass({
                 </div>
             </div>
         );
+    },
+
+    _highlightQuery: function (text, query) {
+        var regex = new RegExp("(" + query + ")", "gi");
+        return text.replace(regex, "<strong>$1</strong>");
     }
+
 });
 
 module.exports = RootUI;
