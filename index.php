@@ -6,14 +6,9 @@ if ($q) {
     if (PHP_OS == "Darwin") {
         // Hardcoded sample results for mac. It hard to setup csearch index on mac.
         // so hardcoding some results, so that we can develop on mac.
-        $results = array(
-            "/home/mahesh/_thoughtspot/callosum/metadata/src/test/java/com/".
-             "thoughtspot/callosum/metadata/MetadataHeaderTest.java:23: *".
-             " @author Mahesh Sharma",
-            "/home/mahesh/_thoughtspot/callosum/metadata/src/test/java/com/".
-             "thoughtspot/callosum/metadata/MetadataHeaderUnitTest.java:26: *".
-             " @author Mahesh Sharma",
-        );
+        $results = array_filter(
+            explode("\n", file_get_contents("sample_results.txt")));
+        $q = "FalconRequest.Builder";
     } else {
         $options = "-n";
         exec("sudo -u www-data csearch $options \"$q\" 2>&1", $results);

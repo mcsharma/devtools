@@ -1,0 +1,55 @@
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:511:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageLogicalMetadataHandler.java:1357:                FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:156:    private final FalconRequest.Builder request;
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:164:     * @param requestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:168:            final FalconRequest.Builder requestBuilder) {
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:213:    public FalconRequest.Builder getFalconRequest() {
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:428:            FalconRequest.Builder request = queries.get(0).getFalconRequest();
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/FalconWorkerClient.java:92:        FalconRequest.Builder clonedFalconRequestBuilder = FalconRequest.newBuilder()
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/GenericQuery.java:124:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/GenericQuery.java:128:            final Query.FalconRequest.Builder falconRequestBuilder) {
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/GenericQuery.java:138:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/GenericQuery.java:144:            final Query.FalconRequest.Builder falconRequestBuilder) {
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:393:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:405:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:471:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:623:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:633:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:774:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:787:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1079:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1087:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1135:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1146:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1239:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1251:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1324:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1337:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1596:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1609:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1783:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1794:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1970:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1979:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2036:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2045:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2136:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2146:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2431:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2440:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2702:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2711:            final FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2793:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2802:            FalconRequest.Builder falconRequestBuilder)
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:167:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:174:            final Query.FalconRequest.Builder falconRequestBuilder) {
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:194:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:199:            final Query.FalconRequest.Builder falconRequestBuilder) {
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:209:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:213:            final Query.FalconRequest.Builder falconRequestBuilder) {
+/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/query/AnswerBookQueryUnitTest.java:540:            final FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
+/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/query/FalconProtoRowSecurityTest.java:340:        final FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
+/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/query/PinboardQueryNonParamTest.java:92:            final FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
+/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/query/PinboardQueryTest.java:139:            final FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
+/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/query/TestQueryUtil.java:75:        final FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
+/home/mahesh/_thoughtspot/callosum/dataload/src/test/java/com/thoughtspot/callosum/dataload/manager/csv/CSVDataLoadManagerImplTest.java:184:            FalconRequest.Builder rBuilder = FalconRequest.newBuilder();

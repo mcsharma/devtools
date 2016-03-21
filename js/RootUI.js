@@ -18,8 +18,8 @@ var RootUI = React.createClass({
                         <span> {results.length} results found!</span>
                     </form>
                 </div>
-                <div>Search Results:</div>
-                <div>
+                <div className="resultsTitle">Search Results:</div>
+                <div className="results code">
                     {results.map(function (result) {
                         var parts = result.substr(26).split(":");
                         var url =
@@ -28,7 +28,7 @@ var RootUI = React.createClass({
                             "$" + parts[1];
                         var text = parts[0] + ":" + parts[1];
                         return (
-                            <div key={i++}>
+                            <div className="result" key={i++}>
                                 <div><a href={url}>{text}</a></div>
                                 <div dangerouslySetInnerHTML={{
                                     __html: this._highlightQuery(

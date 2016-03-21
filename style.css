@@ -1,3 +1,17 @@
-.caseinput {
-  margin-left: 200px;
+.code {
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.results {
+    margin-left: 35px;
+    border-left: 1.5px solid #909090;
+}
+
+.result {
+    margin-left: 5px;
+}
+
+.resultsTitle {
+    margin-bottom: 5px;
 }
