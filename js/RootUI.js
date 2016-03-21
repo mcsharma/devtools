@@ -105,6 +105,7 @@ var RootUI = React.createClass({
                         defaultValue={this.props.data.q}
                         placeholder="Type text and hit enter"
                         onKeyDown={this._onQueryChange}
+                        ref={function(input) {input.focus()}}
                     />
                     {resultsCountUI}
                     <span className="filters">
