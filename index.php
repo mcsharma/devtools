@@ -13,7 +13,7 @@ if ($q) {
         $q = "FalconRequest.Builder";
     } else {
         $options = "-n";
-				if (!$cs) $options .= " -i";
+        if (!$cs) $options .= " -i";
         exec("sudo -u www-data csearch $options \"$q\" 2>&1", $results);
     }
 }
