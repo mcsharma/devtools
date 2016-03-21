@@ -8,7 +8,7 @@ var RootUI = React.createClass({
             this.key = 0;
         }
         return <tr key={this.key++}>
-            <td className="resultLineNumber">{leftMarkup}</td>
+            <td className="leftPannel">{leftMarkup}</td>
             <td className="resultFileView">{rightMarkup}</td>
         </tr>
     },
