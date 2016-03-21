@@ -7,6 +7,7 @@
 /home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:428:            FalconRequest.Builder request = queries.get(0).getFalconRequest();
 /home/mahesh/_thoughtspot/sage/metadata/callosum_client.cpp:40:      &SageMetadataServiceClient::FalconRequest.Builder, request, response);
 /home/mahesh/_thoughtspot/sage/metadata/callosum_client.cpp:46:      &SageMetadataServiceClient::FalconRequest.Builder, request, response);
+/home/mahesh/_thoughtspot/sage/metadata/callosum_client.cpp:48:      &SageMetadataServiceClient::FalconRequest.builder, request, response);
 /home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/FalconWorkerClient.java:92:        FalconRequest.Builder clonedFalconRequestBuilder = FalconRequest.newBuilder()
 /home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/GenericQuery.java:124:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
 /home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/GenericQuery.java:128:            final Query.FalconRequest.Builder falconRequestBuilder) {

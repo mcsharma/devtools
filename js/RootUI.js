@@ -23,6 +23,18 @@ var RootUI = React.createClass({
         }
         window.location.href = uri;
     },
+
+    _onCaseChange: function (event) {
+        debugger;
+        var cs = event.target.checked;
+        var uri = URI(window.location.href);
+        if (cs) {
+            uri.setQuery("cs", 1);
+        } else {
+            uri.removeQuery("cs");
+        }
+        window.location.href = uri;
+    },
     
     render: function () {
         var i = 0;
@@ -92,6 +104,20 @@ var RootUI = React.createClass({
                                 <option value="js">js</option>
                                 <option value="go">go</option>
                             </select>
+                            Case Sensitive:
+                            {this.props.data.cs ?
+                                <input
+                                    type="checkbox"
+                                    name = "cs"
+                                    onClick={this._onCaseChange}
+                                    checked="checked"
+                                /> :
+                                <input
+                                    type="checkbox"
+                                    name = "cs"
+                                    onClick={this._onCaseChange}
+                                />
+                            }
                         </span>
                     </form>
                 </div>
@@ -104,7 +130,7 @@ var RootUI = React.createClass({
     },
 
     _highlightQuery: function (text, query) {
-        var regex = new RegExp("(" + query + ")", "gi");
+        var regex = new RegExp("(" + query + ")", "g" + (this.props.data.cs ? "" : "i"));
         return text.replace(regex, "<strong>$1</strong>");
     }
 
