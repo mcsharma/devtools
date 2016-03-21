@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var URI = require('urijs');
 
 var RootUI = React.createClass({
     _getRowMarkup: function (leftMarkup, rightMarkup) {
@@ -12,21 +13,39 @@ var RootUI = React.createClass({
         </tr>
     },
 
+    _onFileTypeChange: function (event) {
+        var fileType = event.target.value;
+        var uri = URI(window.location.href);
+        if (fileType) {
+            uri.setQuery("fileType", event.target.value);
+        } else {
+            uri.removeQuery("fileType");
+        }
+        window.location.href = uri;
+    },
+    
     render: function () {
         var i = 0;
-        var rawResults = this.props.data['results'];
+        var rawResults = this.props.data.results;
         var results = {};
+        var count = 0;
         rawResults.forEach(function (result) {
             var parts = result.substr(26).split(":");
+            // filter
+            if (this.props.data.fileType &&
+                !parts[0].endsWith("."+this.props.data.fileType)) {
+                return;
+            }
+            count++;
             if (!results[parts[0]]) results[parts[0]] = {};
             results[parts[0]][parts[1]] = parts.slice(2).join(":");
-        });
+        }.bind(this));
         var markups = [];
         for (var filePath in results) {
             if (!results.hasOwnProperty(filePath)) continue;
+            var fileLink = this.props.data.prefix + filePath;
             var fileHref =
-                this.props.data.prefix +
-                filePath + "$" +
+                fileLink + "$" +
                 Object.keys(results[filePath]).join(","); // Phabricator will highlight these lines
             var mainRow = this._getRowMarkup(
                 null,
@@ -38,10 +57,10 @@ var RootUI = React.createClass({
                 var line = results[filePath][lineNum];
                 var highlightedLine = this._highlightQuery(
                     line,
-                    this.props.data['q']
+                    this.props.data.q
                 );
                 var individualRow = this._getRowMarkup(
-                    lineNum,
+                    <a href={fileLink+"$"+lineNum}>{lineNum}</a>,
                     <div dangerouslySetInnerHTML={{__html: highlightedLine}}></div>
                 );
                 markups.push(individualRow);
@@ -55,11 +74,25 @@ var RootUI = React.createClass({
                     <form action="/" method="get">
                         <input
                             name="q"
-                            defaultValue={this.props.data['q']}
+                            defaultValue={this.props.data.q}
                             placeholder="Type text to search"
                         />
                         <input type="submit" value="Search"/>
-                        <span> {rawResults.length} results found!</span>
+                        <span> {count} results found!</span>
+                        <span className="filters">
+                            File type:
+                            <select 
+                                className="fileTypeSelector" 
+                                name="fileType" 
+                                value={this.props.data.fileType}
+                                onChange={this._onFileTypeChange}>
+                                <option value="">all</option>
+                                <option value="java">java</option>
+                                <option value="cpp">cpp</option>
+                                <option value="js">js</option>
+                                <option value="go">go</option>
+                            </select>
+                        </span>
                     </form>
                 </div>
                 <div className="resultsTitle">Search Results:</div>

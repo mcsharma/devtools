@@ -1,6 +1,7 @@
 .code {
-  font-family: monospace;
-  font-size: 16px;
+    font-family: monospace;
+    font-size: 16px;
+    white-space: pre;
 }
 
 .resultFileView {
@@ -16,3 +17,10 @@
     margin-bottom: 5px;
 }
 
+.filters {
+    margin-left: 200px;
+}
+
+.filetypeSelector {
+    width: 75px;
+}

@@ -4,6 +4,7 @@
     "author": "Mahesh Sharma",
     "description": "A web app for searching code in a repository",
     "dependencies": {
+      "urijs" : "latest"
     },
     "devDependencies": {
       "browserify": "latest",

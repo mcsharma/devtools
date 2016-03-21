@@ -1,6 +1,6 @@
 <?php
-$q = $_GET['q'];
-$q = $q ?: "";
+$q = $_GET['q'] ?: "";
+$fileType = $_GET['fileType'] ?: "";
 $results = array();
 if ($q) {
     if (PHP_OS == "Darwin") {
@@ -18,6 +18,7 @@ if ($q) {
 $data = json_encode(array(
     "prefix" => "http://www.thoughtspot.co/diffusion/2/browse/master/",
     "q" => $q,
+    "fileType" => $fileType,
     "results" => $results,
 ));
 ?>
