@@ -1,3 +1,19 @@
+body {
+    margin: 0;
+}
+
+.topBar {
+    height: 20px;
+    background-color: #fff6de;
+    padding: 12px;
+    border-bottom: 1px solid #A0A0A0;
+}
+
+.query {
+    width: 160px;
+    height: 22px;
+}
+
 .code {
     font-family: monospace;
     font-size: 16px;
@@ -15,13 +31,21 @@
 }
 
 .resultsTitle {
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
 }
 
 .filters {
     margin-left: 200px;
 }
 
+.filter {
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
 .filetypeSelector {
-    width: 75px;
+    width: 90px;
 }

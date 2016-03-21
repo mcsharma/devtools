@@ -92,8 +92,9 @@ var RootUI = React.createClass({
         }
         return (
             <div>
-                <div>
+                <div className="topBar">
                     <input
+                        className="query"
                         name="q"
                         defaultValue={this.props.data.q}
                         placeholder="Type text to search"
@@ -101,7 +102,7 @@ var RootUI = React.createClass({
                     />
                     <span> {count} results found!</span>
                     <span className="filters">
-                        File type:
+                        <span className="filter">File type:</span>
                         <select
                             className="fileTypeSelector"
                             name="fileType"
@@ -113,13 +114,13 @@ var RootUI = React.createClass({
                             <option value="js">js</option>
                             <option value="go">go</option>
                         </select>
-                        Case Sensitive:
+                        <span className="filter">Case sensitive:</span>
                         {this.props.data.cs ?
                             <input
                                 type="checkbox"
                                 name="cs"
                                 onClick={this._onCaseChange}
-                                checked="checked"
+                                defaultChecked="checked"
                             /> :
                             <input
                                 type="checkbox"
