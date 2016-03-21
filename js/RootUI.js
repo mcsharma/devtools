@@ -25,7 +25,6 @@ var RootUI = React.createClass({
     },
 
     _onCaseChange: function (event) {
-        debugger;
         var cs = event.target.checked;
         var uri = URI(window.location.href);
         if (cs) {
@@ -34,6 +33,18 @@ var RootUI = React.createClass({
             uri.removeQuery("cs");
         }
         window.location.href = uri;
+    },
+
+    _onQueryChange: function (event) {
+        if (event.keyCode != 13) {
+            return;
+        }
+        var q = event.target.value;
+        var uri = URI(window.location.href);
+        if (q) {
+            uri.setQuery("q", q);
+            window.location.href = uri;
+        }
     },
 
     render: function () {
@@ -86,6 +97,7 @@ var RootUI = React.createClass({
                         name="q"
                         defaultValue={this.props.data.q}
                         placeholder="Type text to search"
+                        onKeyDown={this._onQueryChange}
                     />
                     <span> {count} results found!</span>
                     <span className="filters">
