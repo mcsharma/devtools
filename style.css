@@ -3,15 +3,16 @@
   font-size: 16px;
 }
 
-.results {
-    margin-left: 35px;
+.resultFileView {
+    padding-left: 5px;
     border-left: 1.5px solid #909090;
 }
 
-.result {
-    margin-left: 5px;
+.resultLineNumber {
+    padding-left: 20px;
 }
 
 .resultsTitle {
     margin-bottom: 5px;
 }
+
