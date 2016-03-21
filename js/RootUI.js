@@ -19,7 +19,7 @@ var RootUI = React.createClass({
         rawResults.forEach(function (result) {
             var parts = result.substr(26).split(":");
             if (!results[parts[0]]) results[parts[0]] = {};
-            results[parts[0]][parts[1]] = parts[2];
+            results[parts[0]][parts[1]] = parts.slice(2).join(":");
         });
         var markups = [];
         for (var filePath in results) {
