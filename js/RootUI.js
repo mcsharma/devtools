@@ -90,6 +90,12 @@ var RootUI = React.createClass({
             // Add an empty line.
             markups.push(this._getRowMarkup(null, <br />));
         }
+        var resultsCountUI = null, searchResultTitleUI = null;
+        if (this.props.data.q) {
+            resultsCountUI = <span className="resultsCount">{count} results found!</span>;
+            searchResultTitleUI = <div className="resultsTitle">Search Results:</div>;
+        }
+
         return (
             <div>
                 <div className="topBar">
@@ -97,10 +103,10 @@ var RootUI = React.createClass({
                         className="query"
                         name="q"
                         defaultValue={this.props.data.q}
-                        placeholder="Type text to search"
+                        placeholder="Type text and hit enter"
                         onKeyDown={this._onQueryChange}
                     />
-                    <span> {count} results found!</span>
+                    {resultsCountUI}
                     <span className="filters">
                         <span className="filter">File type:</span>
                         <select
@@ -130,7 +136,7 @@ var RootUI = React.createClass({
                         }
                     </span>
                 </div>
-                <div className="resultsTitle">Search Results:</div>
+                {searchResultTitleUI}
                 <table className="code" cellPadding="0" cellSpacing="0">
                     <tbody>{markups}</tbody>
                 </table>
