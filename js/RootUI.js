@@ -35,7 +35,7 @@ var RootUI = React.createClass({
         }
         window.location.href = uri;
     },
-    
+
     render: function () {
         var i = 0;
         var rawResults = this.props.data.results;
@@ -44,8 +44,7 @@ var RootUI = React.createClass({
         rawResults.forEach(function (result) {
             var parts = result.substr(26).split(":");
             // filter
-            if (this.props.data.fileType &&
-                !parts[0].endsWith("."+this.props.data.fileType)) {
+            if (this.props.data.fileType && !parts[0].endsWith("." + this.props.data.fileType)) {
                 return;
             }
             count++;
@@ -83,43 +82,40 @@ var RootUI = React.createClass({
         return (
             <div>
                 <div>
-                    <form action="/" method="get">
-                        <input
-                            name="q"
-                            defaultValue={this.props.data.q}
-                            placeholder="Type text to search"
-                        />
-                        <input type="submit" value="Search"/>
-                        <span> {count} results found!</span>
-                        <span className="filters">
-                            File type:
-                            <select 
-                                className="fileTypeSelector" 
-                                name="fileType" 
-                                value={this.props.data.fileType}
-                                onChange={this._onFileTypeChange}>
-                                <option value="">all</option>
-                                <option value="java">java</option>
-                                <option value="cpp">cpp</option>
-                                <option value="js">js</option>
-                                <option value="go">go</option>
-                            </select>
-                            Case Sensitive:
-                            {this.props.data.cs ?
-                                <input
-                                    type="checkbox"
-                                    name = "cs"
-                                    onClick={this._onCaseChange}
-                                    checked="checked"
-                                /> :
-                                <input
-                                    type="checkbox"
-                                    name = "cs"
-                                    onClick={this._onCaseChange}
-                                />
-                            }
-                        </span>
-                    </form>
+                    <input
+                        name="q"
+                        defaultValue={this.props.data.q}
+                        placeholder="Type text to search"
+                    />
+                    <span> {count} results found!</span>
+                    <span className="filters">
+                        File type:
+                        <select
+                            className="fileTypeSelector"
+                            name="fileType"
+                            value={this.props.data.fileType}
+                            onChange={this._onFileTypeChange}>
+                            <option value="">all</option>
+                            <option value="java">java</option>
+                            <option value="cpp">cpp</option>
+                            <option value="js">js</option>
+                            <option value="go">go</option>
+                        </select>
+                        Case Sensitive:
+                        {this.props.data.cs ?
+                            <input
+                                type="checkbox"
+                                name="cs"
+                                onClick={this._onCaseChange}
+                                checked="checked"
+                            /> :
+                            <input
+                                type="checkbox"
+                                name="cs"
+                                onClick={this._onCaseChange}
+                            />
+                        }
+                    </span>
                 </div>
                 <div className="resultsTitle">Search Results:</div>
                 <table className="code" cellPadding="0" cellSpacing="0">
