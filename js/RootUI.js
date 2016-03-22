@@ -58,6 +58,9 @@ var RootUI = React.createClass({
     },
 
     _onMouseUp: function (event) {
+        if (event.target.tagName.toLowerCase() === 'a') {
+            window.location.href = event.target.href;
+        }
         var text = window.getSelection().toString();
         var lines = 0;
         text.split("\n").forEach(function (line) {
