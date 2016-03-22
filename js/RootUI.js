@@ -1,8 +1,18 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var URI = require('urijs');
+var $ = require('jquery');
 
 var RootUI = React.createClass({
+
+    getInitialState: function () {
+        return {
+            cardText: "",
+            cardX: 0,
+            cardY: 0
+        };
+    },
+
     _getRowMarkup: function (leftMarkup, rightMarkup) {
         if (typeof this.key == 'undefined') {
             this.key = 0;
@@ -47,6 +57,31 @@ var RootUI = React.createClass({
         }
     },
 
+    _onMouseUp: function (event) {
+        var text = window.getSelection().toString();
+        var lines = 0;
+        text.split("\n").forEach(function (line) {
+            if (line != "") lines++
+        });
+        if (lines > 1) {
+            // selected multiple line, we probably don't want to show hintCard 
+            // in this case
+            this.setState({cardText: ""});
+            return;
+        }
+        this.setState({
+            cardText: text,
+            cardX: event.pageX + 5,
+            cardY: event.pageY - (30 + 10) // Keep it same as the width of hintCard
+        });
+    },
+
+    _getQueryUrl: function (q) {
+        var uri = URI(window.location.href);
+        uri.setQuery("q", q);
+        return uri;
+    },
+
     render: function () {
         var i = 0;
         var rawResults = this.props.data.results;
@@ -55,7 +90,8 @@ var RootUI = React.createClass({
         rawResults.forEach(function (result) {
             var parts = result.substr(26).split(":");
             // filter
-            if (this.props.data.fileType && !parts[0].endsWith("." + this.props.data.fileType)) {
+            if (this.props.data.fileType &&
+                !parts[0].endsWith("." + this.props.data.fileType)) {
                 return;
             }
             count++;
@@ -83,7 +119,8 @@ var RootUI = React.createClass({
                 );
                 var individualRow = this._getRowMarkup(
                     <a href={fileLink+"$"+lineNum}>{lineNum}</a>,
-                    <div dangerouslySetInnerHTML={{__html: highlightedLine}}></div>
+                    <div
+                        dangerouslySetInnerHTML={{__html: highlightedLine}}></div>
                 );
                 markups.push(individualRow);
             }
@@ -95,20 +132,35 @@ var RootUI = React.createClass({
             resultsSummaryUI = <span className="resultsCount">
                 <strong>{count}</strong> results ({this.props.data.execTimeMs}ms)
             </span>;
-            searchResultTitleUI = <div className="resultsTitle">Search Results:</div>;
+            searchResultTitleUI =
+                <div className="resultsTitle">Search Results:</div>;
         }
 
+        var hintCard = null;
+        if (this.state.cardText.trim()) {
+            // Note that here we don't want to trim, because the search is
+            // sensitive to leading/trailing whitespaces.
+            var text = this.state.cardText;
+            hintCard = <div
+                className="hintCard code"
+                style={{
+                    left: this.state.cardX,
+                    top: this.state.cardY,
+                    width: Math.min(Math.max(200, text.length * 10), 500)}}>
+                Search for:
+                <div><a href={this._getQueryUrl(text)}>{text}</a></div>
+            </div>
+        }
         return (
             <div>
+                {hintCard}
                 <div className="topBar">
                     <input
                         className="query"
                         name="q"
                         defaultValue={this.props.data.q}
                         placeholder="Type text and hit enter"
-                        onKeyDown={this._onQueryChange}
-                        ref={function(input) {input.focus()}}
-                    />
+                        onKeyDown={this._onQueryChange}/>
                     {resultsSummaryUI}
                     <span className="filters">
                         <span className="filter">File type:</span>
@@ -140,7 +192,11 @@ var RootUI = React.createClass({
                     </span>
                 </div>
                 {searchResultTitleUI}
-                <table className="code" cellPadding="0" cellSpacing="0">
+                <table
+                    className="code"
+                    cellPadding="0"
+                    cellSpacing="0"
+                    onMouseUp={this._onMouseUp}>
                     <tbody>{markups}</tbody>
                 </table>
             </div>
