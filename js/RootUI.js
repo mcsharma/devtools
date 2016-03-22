@@ -204,7 +204,21 @@ var RootUI = React.createClass({
     },
 
     _highlightQuery: function (text, query) {
-        var regex = new RegExp("(" + query + ")", "g" + (this.props.data.cs ? "" : "i"));
+        // chars that should be escaped
+        // if we are using them in a regex want them to be treated as normal
+        // characters.
+        var charsToEscape = ".^$*+-?()[]{}\|";
+        var regexSafeQuery = "";
+        for (var i = 0; i < query.length; i++) {
+            var c = query[i];
+            if (charsToEscape.indexOf(c) !== -1) {
+                regexSafeQuery += "\\";
+            }
+            regexSafeQuery += c;
+        }
+        console.log(regexSafeQuery);
+        var regex = new RegExp("(" + regexSafeQuery + ")", "g"
+            + (this.props.data.cs ? "" : "i"));
         return text.replace(regex, "<strong>$1</strong>");
     }
 
