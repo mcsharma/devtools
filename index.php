@@ -16,7 +16,8 @@ if ($q) {
     } else {
         $options = "-n";
         if (!$cs) $options .= " -i";
-        exec("sudo -u www-data csearch $options \"$q\" 2>&1", $results);
+				$escaped_q = preg_quote($q);
+        exec("sudo -u www-data csearch $options \"$escaped_q\" 2>&1", $results);
     }
     $time_end = microtime(true);
     $exec_time_ms = ($time_end - $time_start) * 1000;
