@@ -4,7 +4,9 @@ $q = $_GET['q'] ?: "";
 $fileType = $_GET['fileType'] ?: "";
 $cs = $_GET['cs'] === "1" ? 1 : 0;
 $results = array();
+$exec_time_ms = 0; // in milliseconds
 if ($q) {
+    $time_start = microtime(true);
     if (PHP_OS == "Darwin") {
         // Hardcoded sample results for mac. It hard to setup csearch index on mac.
         // so hardcoding some results, so that we can develop on mac.
@@ -16,6 +18,8 @@ if ($q) {
         if (!$cs) $options .= " -i";
         exec("sudo -u www-data csearch $options \"$q\" 2>&1", $results);
     }
+    $time_end = microtime(true);
+    $exec_time_ms = ($time_end - $time_start) * 1000;
 }
 
 $data = json_encode(array(
@@ -24,6 +28,7 @@ $data = json_encode(array(
     "results" => $results,
     "fileType" => $fileType,
     "cs" => $cs,
+    "execTimeMs" => intval($exec_time_ms),
 ));
 ?>
 

@@ -90,9 +90,11 @@ var RootUI = React.createClass({
             // Add an empty line.
             markups.push(this._getRowMarkup(null, <br />));
         }
-        var resultsCountUI = null, searchResultTitleUI = null;
+        var resultsSummaryUI = null, searchResultTitleUI = null;
         if (this.props.data.q) {
-            resultsCountUI = <span className="resultsCount">{count} results found!</span>;
+            resultsSummaryUI = <span className="resultsCount">
+                <strong>{count}</strong> results ({this.props.data.execTimeMs}ms)
+            </span>;
             searchResultTitleUI = <div className="resultsTitle">Search Results:</div>;
         }
 
@@ -107,7 +109,7 @@ var RootUI = React.createClass({
                         onKeyDown={this._onQueryChange}
                         ref={function(input) {input.focus()}}
                     />
-                    {resultsCountUI}
+                    {resultsSummaryUI}
                     <span className="filters">
                         <span className="filter">File type:</span>
                         <select
