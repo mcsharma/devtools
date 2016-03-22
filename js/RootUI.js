@@ -173,6 +173,7 @@ var RootUI = React.createClass({
                             <option value="java">java</option>
                             <option value="cpp">cpp</option>
                             <option value="js">js</option>
+                            <option value="py">py</option>
                             <option value="go">go</option>
                         </select>
                         <span className="filter">Case sensitive:</span>
@@ -219,6 +220,7 @@ var RootUI = React.createClass({
         console.log(regexSafeQuery);
         var regex = new RegExp("(" + regexSafeQuery + ")", "g"
             + (this.props.data.cs ? "" : "i"));
+        // TODO escape HTML
         return text.replace(regex, "<strong>$1</strong>");
     }
 
