@@ -1,5 +1,7 @@
 body {
     margin: 0;
+    font-family: Arial,'Helvetica Neue',Helvetica,sans-serif;
+    font-size: 13px;
 }
 
 .topBar {
@@ -38,8 +40,8 @@ body {
     margin-top: 22px;
     margin-left: 8px;
     margin-bottom: 8px;
-    font-size: 18px;
-    font-family: initial;
+    font-size: 14px;
+    font-family: Arial,'Helvetica Neue',Helvetica,sans-serif;
 }
 
 .filters {

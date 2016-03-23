@@ -130,13 +130,13 @@ var RootUI = React.createClass({
             // sensitive to leading/trailing whitespaces.
             var line = this.state.cardText;
             hintCard = <div
-                className="hintCard code"
+                className="hintCard"
                 style={{
                     left: this.state.cardX || 0,
                     top: this.state.cardY || 0,
                     width: Math.min(Math.max(200, line.length * 10), 500)}}>
                 Search for:
-                <div><a href={this._getQueryUrl(line)}>{line}</a></div>
+                <div className="code"><a href={this._getQueryUrl(line)}>{line}</a></div>
             </div>
         }
         return (
@@ -211,6 +211,9 @@ var RootUI = React.createClass({
                 regexSafeQuery += "\\";
             }
             regexSafeQuery += c;
+        }
+        if (this.props.data.ww) {
+            regexSafeQuery = "\\b" + regexSafeQuery + "\\b";
         }
         var regex = new RegExp("(" + regexSafeQuery + ")", "g"
             + (this.props.data.cs ? "" : "i"));
