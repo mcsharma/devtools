@@ -45,6 +45,17 @@ var RootUI = React.createClass({
         }
         window.location.href = uri;
     },
+    
+    _onWholeWordCheck: function (event) {
+        var ww = event.target.checked;
+        var uri = URI(window.location.href);
+        if (ww) {
+            uri.setQuery("ww", 1);
+        } else {
+            uri.removeQuery("ww");
+        }
+        window.location.href = uri;
+    },
 
     _onQueryChange: function (event) {
         if (event.keyCode != 13) {
@@ -188,6 +199,20 @@ var RootUI = React.createClass({
                                 type="checkbox"
                                 name="cs"
                                 onClick={this._onCaseChange}
+                            />
+                        }
+                        <span className="filter">Whole word:</span>
+                        {this.props.data.ww ?
+                            <input
+                                type="checkbox"
+                                name="ww"
+                                onClick={this._onWholeWordCheck}
+                                defaultChecked="checked"
+                            /> :
+                            <input
+                                type="checkbox"
+                                name="ww"
+                                onClick={this._onWholeWordCheck}
                             />
                         }
                     </span>

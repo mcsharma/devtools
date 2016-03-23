@@ -3,6 +3,7 @@
 $q = $_GET['q'] ?: "";
 $fileType = $_GET['fileType'] ?: "";
 $cs = $_GET['cs'] === "1" ? 1 : 0;
+$ww = $_GET['ww'] === "1" ? 1 : 0;
 $results = array();
 $exec_time_ms = 0; // in milliseconds
 if ($q) {
@@ -16,7 +17,10 @@ if ($q) {
     } else {
         $options = "-n";
         if (!$cs) $options .= " -i";
-				$escaped_q = preg_quote($q);
+        $escaped_q = addslashes(preg_quote($q));
+        if ($ww) {
+            $escaped_q = "\\b".$escaped_q."\\b";
+        }
         exec("sudo -u www-data csearch $options \"$escaped_q\" 2>&1", $results);
     }
     $time_end = microtime(true);
@@ -29,6 +33,7 @@ $data = json_encode(array(
     "results" => $results,
     "fileType" => $fileType,
     "cs" => $cs,
+    "ww" => $ww,
     "execTimeMs" => intval($exec_time_ms),
 ));
 ?>
@@ -42,6 +47,6 @@ $data = json_encode(array(
     </script>
 </head>
 <body>
-    <div id="container" />
+<div id="container"/>
 </body>
 </html>
