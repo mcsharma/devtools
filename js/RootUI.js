@@ -8,9 +8,6 @@ var RootUI = React.createClass({
 
     getInitialState: function () {
         return {
-            cardText: "",
-            cardX: 0,
-            cardY: 0
         };
     },
 
@@ -128,15 +125,15 @@ var RootUI = React.createClass({
         }
 
         var hintCard = null;
-        if (this.state.cardText.trim()) {
+        if (this.state.cardText && this.state.cardText.trim()) {
             // Note that here we don't want to trim, because the search is
             // sensitive to leading/trailing whitespaces.
             var line = this.state.cardText;
             hintCard = <div
                 className="hintCard code"
                 style={{
-                    left: this.state.cardX,
-                    top: this.state.cardY,
+                    left: this.state.cardX || 0,
+                    top: this.state.cardY || 0,
                     width: Math.min(Math.max(200, line.length * 10), 500)}}>
                 Search for:
                 <div><a href={this._getQueryUrl(line)}>{line}</a></div>
@@ -151,8 +148,7 @@ var RootUI = React.createClass({
                         name="q"
                         defaultValue={this.props.data.q}
                         placeholder="Type text and hit enter"
-                        onKeyDown={this._onQueryChange}
-                        ref={function (input) {input.focus();}}/>
+                        onKeyDown={this._onQueryChange}/>
                     {resultsSummaryUI}
                     <span className="filters">
                         <span className="filter">File type:</span>
