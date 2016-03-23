@@ -45,7 +45,7 @@ var RootUI = React.createClass({
         }
         window.location.href = uri;
     },
-    
+
     _onWholeWordCheck: function (event) {
         var ww = event.target.checked;
         var uri = URI(window.location.href);
@@ -97,69 +97,49 @@ var RootUI = React.createClass({
         var i = 0;
         var rawResults = this.props.data.results;
         var results = {};
-        var count = 0;
+        var topResults = {};
+        var count = 0, topCount = 0;
         rawResults.forEach(function (result) {
             var parts = result.substr(26).split(":");
+            var filePath = parts[0],
+                lineNum = parts[1],
+                line = parts.slice(2).join(":");
             // filter
-            if (this.props.data.fileType &&
-                !parts[0].endsWith("." + this.props.data.fileType)) {
+            if (this.props.data.fileType && !filePath.endsWith("." + this.props.data.fileType)) {
                 return;
             }
             count++;
-            if (!results[parts[0]]) results[parts[0]] = {};
-            results[parts[0]][parts[1]] = parts.slice(2).join(":");
-        }.bind(this));
-        var markups = [];
-        for (var filePath in results) {
-            if (!results.hasOwnProperty(filePath)) continue;
-            var fileLink = this.props.data.prefix + filePath;
-            var fileHref =
-                fileLink + "$" +
-                Object.keys(results[filePath]).join(","); // Phabricator will highlight these lines
-            var mainRow = this._getRowMarkup(
-                null,
-                <a href={fileHref}>{filePath}</a>
-            );
-            markups.push(mainRow);
-            for (var lineNum in results[filePath]) {
-                if (!results[filePath].hasOwnProperty(lineNum)) continue;
-                var line = results[filePath][lineNum];
-                var highlightedLine = this._highlightQuery(
-                    line,
-                    this.props.data.q
-                );
-                var individualRow = this._getRowMarkup(
-                    <a href={fileLink+"$"+lineNum}>{lineNum}</a>,
-                    <div
-                        dangerouslySetInnerHTML={{__html: highlightedLine}}></div>
-                );
-                markups.push(individualRow);
+            results[filePath] = results[filePath] || {};
+            results[filePath][lineNum] = line;
+            if (Utils.isTopResult(filePath, line, this.props.data.q)) {
+                topCount++;
+                topResults[filePath] = topResults[filePath] || {};
+                topResults[filePath][lineNum] = line;
             }
-            // Add an empty line.
-            markups.push(this._getRowMarkup(null, <br />));
-        }
-        var resultsSummaryUI = null, searchResultTitleUI = null;
+        }.bind(this));
+        var resultsSummaryUI = null, allResultsTitleUI = null;
         if (this.props.data.q) {
             resultsSummaryUI = <span className="resultsCount">
                 <strong>{count}</strong> results ({this.props.data.execTimeMs}ms)
             </span>;
-            searchResultTitleUI =
-                <div className="resultsTitle">Search Results:</div>;
+            allResultsTitleUI =
+                <div className="resultsTitle"><strong>All Results:</strong>
+                </div>;
         }
 
         var hintCard = null;
         if (this.state.cardText.trim()) {
             // Note that here we don't want to trim, because the search is
             // sensitive to leading/trailing whitespaces.
-            var text = this.state.cardText;
+            var line = this.state.cardText;
             hintCard = <div
                 className="hintCard code"
                 style={{
                     left: this.state.cardX,
                     top: this.state.cardY,
-                    width: Math.min(Math.max(200, text.length * 10), 500)}}>
+                    width: Math.min(Math.max(200, line.length * 10), 500)}}>
                 Search for:
-                <div><a href={this._getQueryUrl(text)}>{text}</a></div>
+                <div><a href={this._getQueryUrl(line)}>{line}</a></div>
             </div>
         }
         return (
@@ -217,14 +197,7 @@ var RootUI = React.createClass({
                         }
                     </span>
                 </div>
-                {searchResultTitleUI}
-                <table
-                    className="code"
-                    cellPadding="0"
-                    cellSpacing="0"
-                    onMouseUp={this._onMouseUp}>
-                    <tbody>{markups}</tbody>
-                </table>
+                {this._renderResults(topResults, results)}
             </div>
         );
     },
@@ -246,6 +219,60 @@ var RootUI = React.createClass({
             + (this.props.data.cs ? "" : "i"));
         // TODO escape HTML
         return text.replace(regex, "<strong>$1</strong>");
+    },
+
+    _renderResults: function (topResults, results) {
+        var rows = [];
+        rows.push(this._getRowMarkup(
+            null,
+            <div className="resultsTitle">Top Results</div>)
+        );
+        rows = rows.concat(this._getResultRows(topResults));
+        rows.push(this._getRowMarkup(
+            null,
+            <div className="sectionSeparator"/>)
+        );
+        rows = rows.concat(this._getResultRows(results));
+        return <table
+            className="code"
+            cellPadding="0"
+            cellSpacing="0"
+            onMouseUp={this._onMouseUp}>
+            <tbody>{rows}</tbody>
+        </table>;
+    },
+
+    _getResultRows: function (results) {
+        var rows = [];
+        for (var filePath in results) {
+            if (!results.hasOwnProperty(filePath)) continue;
+            var fileLink = this.props.data.prefix + filePath;
+            var fileHref =
+                fileLink + "$" +
+                Object.keys(results[filePath]).join(",");
+            var mainRow = this._getRowMarkup(
+                null,
+                <a href={fileHref}>{filePath}</a>
+            );
+            rows.push(mainRow);
+            for (var lineNum in results[filePath]) {
+                if (!results[filePath].hasOwnProperty(lineNum)) continue;
+                var line = results[filePath][lineNum];
+                var highlightedLine = this._highlightQuery(
+                    line,
+                    this.props.data.q
+                );
+                var individualRow = this._getRowMarkup(
+                    <a href={fileLink+"$"+lineNum}>{lineNum}</a>,
+                    <div dangerouslySetInnerHTML={{__html: highlightedLine}}>
+                    </div>
+                );
+                rows.push(individualRow);
+            }
+            // Add an empty line.
+            rows.push(this._getRowMarkup(null, <br />));
+        }
+        return rows;
     }
 
 });

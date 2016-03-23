@@ -1,58 +1,168 @@
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:511:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageLogicalMetadataHandler.java:1357:                FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:156:    private final FalconRequest.Builder request;
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:164:     * @param requestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:168:            final FalconRequest.Builder requestBuilder) {
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:213:    public FalconRequest.Builder getFalconRequest() {
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/DataQuery.java:428:            FalconRequest.Builder request = queries.get(0).getFalconRequest();
-/home/mahesh/_thoughtspot/sage/metadata/callosum_client.cpp:40:      &SageMetadataServiceClient::FalconRequest.Builder, request, response);
-/home/mahesh/_thoughtspot/sage/metadata/callosum_client.cpp:46:      &SageMetadataServiceClient::FalconRequest.Builder, request, response);
-/home/mahesh/_thoughtspot/sage/metadata/callosum_client.cpp:48:      &SageMetadataServiceClient::FalconRequest.builder, request, response);
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/FalconWorkerClient.java:92:        FalconRequest.Builder clonedFalconRequestBuilder = FalconRequest.newBuilder()
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/GenericQuery.java:124:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/GenericQuery.java:128:            final Query.FalconRequest.Builder falconRequestBuilder) {
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/GenericQuery.java:138:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/GenericQuery.java:144:            final Query.FalconRequest.Builder falconRequestBuilder) {
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:393:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:405:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:471:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:623:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:633:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:774:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:787:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1079:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1087:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1135:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1146:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1239:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1251:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1324:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1337:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1596:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1609:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1783:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1794:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1970:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:1979:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2036:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2045:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2136:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2146:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2431:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2440:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2702:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2711:            final FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2793:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/QueryGenerator.java:2802:            FalconRequest.Builder falconRequestBuilder)
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:167:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:174:            final Query.FalconRequest.Builder falconRequestBuilder) {
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:194:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:199:            final Query.FalconRequest.Builder falconRequestBuilder) {
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:209:     * @param falconRequestBuilder Instance of FalconRequest.Builder object shared across all
-/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/query/RootQuery.java:213:            final Query.FalconRequest.Builder falconRequestBuilder) {
-/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/query/AnswerBookQueryUnitTest.java:540:            final FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
-/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/query/FalconProtoRowSecurityTest.java:340:        final FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
-/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/query/PinboardQueryNonParamTest.java:92:            final FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
-/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/query/PinboardQueryTest.java:139:            final FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
-/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/query/TestQueryUtil.java:75:        final FalconRequest.Builder requestBuilder = FalconRequest.newBuilder();
-/home/mahesh/_thoughtspot/callosum/dataload/src/test/java/com/thoughtspot/callosum/dataload/manager/csv/CSVDataLoadManagerImplTest.java:184:            FalconRequest.Builder rBuilder = FalconRequest.newBuilder();
+/home/mahesh/_thoughtspot/blink/app/src/modules/home/home-dashboard/home-dashboard-controller-spec.js:16:        _mockMetadataService,
+/home/mahesh/_thoughtspot/blink/app/src/modules/home/home-dashboard/home-dashboard-controller-spec.js:63:            _mockMetadataService = jasmine.createSpyObj('metadataService', ['getMetadataListModel']);
+/home/mahesh/_thoughtspot/blink/app/src/modules/home/home-dashboard/home-dashboard-controller-spec.js:64:            _mockMetadataService.getMetadataListModel.and.returnValue(getPinboardItemsListModel(true));
+/home/mahesh/_thoughtspot/blink/app/src/modules/home/home-dashboard/home-dashboard-controller-spec.js:81:                metadataService: _mockMetadataService,
+/home/mahesh/_thoughtspot/blink/app/src/modules/home/home-dashboard/home-dashboard-controller-spec.js:89:        _mockMetadataService.getMetadataListModel.and.returnValue(getPinboardItemsListModel(false));
+/home/mahesh/_thoughtspot/blink/app/src/modules/home/home-dashboard/home-dashboard-controller-spec.js:92:        expect(_mockMetadataService.getMetadataListModel).toHaveBeenCalled();
+/home/mahesh/_thoughtspot/blink/app/src/modules/home/home-dashboard/home-dashboard-controller-spec.js:116:        expect(_mockMetadataService.getMetadataListModel).toHaveBeenCalled();
+/home/mahesh/_thoughtspot/blink/app/src/modules/home/home-dashboard/home-dashboard-controller-spec.js:128:        expect(_mockMetadataService.getMetadataListModel).toHaveBeenCalled();
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/layers/bubble-layer.js:12:blink.app.factory('BubbleLayer', ['Logger', 'util', 'geoEntityMetadataService', 'BaseVectorLayer', 'BaseVectorSource',
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/layers/bubble-layer.js:14:function(Logger, util, geoEntityMetadataService, BaseVectorLayer, BaseVectorSource, CentroidFeatureLoader,
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/layers/topology-layer.js:17:    'topologyMetadataService',
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/layers/topology-layer.js:25:         topologyMetadataService,
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/layers/topology-layer.js:34:        var topoURL = topologyMetadataService.getTopologyLayerURLForGeoType(geoType);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/layers/topology-layer.js:44:        var isTopologyCountry = topologyMetadataService.getTopologyLayerURLForGeoType(geoType)
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/layers/topology-layer.js:45:                === topologyMetadataService.getTopologyLayerURLForGeoType(jsonConstants.geoType.COUNTRY);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/loaders/centroid-feature-loader.js:10:blink.app.factory('CentroidFeatureLoader', ['Logger', 'util', 'ObservableFeatureLoader', 'geoEntityMetadataService',
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/loaders/centroid-feature-loader.js:11:function(Logger, util, ObservableFeatureLoader, geoEntityMetadataService) {
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/loaders/centroid-feature-loader.js:32:                    geoEntityMetadataService.getCentroidCoordinates(loader.geoType, loader.featureIds),
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/2d/loaders/centroid-feature-loader.js:33:                propertiesPromise = geoEntityMetadataService.getProperties(loader.geoType, loader.featureIds);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/layers/base-feature-3d-layer.js:11:    'shaderService', 'geoUtil', 'geoEntityMetadataService',
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/layers/base-feature-3d-layer.js:12:function($q, Logger, util, Base3DLayer, jsonConstants, shaderService, geoUtil, geoEntityMetadataService) {
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/layers/base-feature-3d-layer.js:248:                geoEntityMetadataService.getCentroidCoordinates(baseFeature3DLayer.geoType, baseFeature3DLayer.featureIds);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/layers/base-feature-3d-layer.js:250:                geoEntityMetadataService.getProperties(baseFeature3DLayer.geoType, baseFeature3DLayer.featureIds);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/layers/topology-3d-layer.js:18:    'geoEntityMetadataService',
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/layers/topology-3d-layer.js:27:         geoEntityMetadataService) {
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/layers/topology-3d-layer.js:140:        var featurePropertiesList = geoEntityMetadataService.getCachedProperties(this.geoType, [featureId]);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/layers/topology-3d-layer.js:197:            var featurePropertiesList = geoEntityMetadataService.getCachedProperties(geoType, [featureId]);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/topo-gl-service.js:11:blink.app.factory('topoGlService', ['$http', '$q', 'Logger', 'protobufParsingService', 'topologyMetadataService',
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/topo-gl-service.js:12:function ($http, $q, Logger, protobufParsingService, topologyMetadataService) {
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/topo-gl-service.js:43:        var topologyLayerURL = topologyMetadataService.getTopoGlURLForGeoType(geoType);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/topojson-renderer.js:11:blink.app.factory('topoJSONRenderer', ['$q', '$http', 'Logger', 'geoUtil', 'util', 'topologyMetadataService',
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/3d/topojson-renderer.js:13:function ($q, $http, Logger, geoUtil, util, topologyMetadataService, jsonConstants, topoGlService) {
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/geo-data-processor.js:17:    'geoEntityMetadataService',
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/geo-data-processor.js:25:          geoEntityMetadataService) {
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/geo-data-processor.js:240:        // TODO (sunny): geoEntityMetadataService will ensure that multiple parallel calls to get bounds does not
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/geo-data-processor.js:245:        var centroidsPromise = geoEntityMetadataService.getCentroidCoordinates(geoType, this.allFeatureIds);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/geo-util.js:10:blink.app.factory('geoUtil', ['Logger', 'util', 'topologyMetadataService', 'blinkConstants',
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/geo-util.js:11:function (Logger, util, topologyMetadataService, blinkConstants) {
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/geo-util.js:49:        var idCandidatePropPaths = topologyMetadataService.getFeatureIDPropPathsForGeoType(geoType);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/geo-util.js:61:        var idCandidatePropPaths = topologyMetadataService.getFeatureIDPropPathsForGeoType(geoType);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/geo-util.js:76:        var idCandidatePropPaths = topologyMetadataService.getFeatureIDPropPathsForGeoType(geoType);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/metadata-services/geo-entity-metadata-service.js:11:blink.app.factory('geoEntityMetadataService', ['$q', '$http', 'Logger', 'topologyMetadataService', 'jsonConstants',
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/metadata-services/geo-entity-metadata-service.js:13:function ($q, $http, Logger, topologyMetadataService, jsonConstants, XHRFeatureLoader, BaseVectorSource, util) {
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/metadata-services/geo-entity-metadata-service.js:52:        var url = topologyMetadataService.getTopoJsonURLForGeoType(geoType),
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/metadata-services/geo-entity-metadata-service.js:88:        var dataURL = topologyMetadataService.getTopoJsonURLForGeoType(geoType),
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/metadata-services/geo-entity-metadata-service.js:98:                var key = topologyMetadataService.getGeometriesKeyForGeoType(geoType);
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/metadata-services/geo-entity-metadata-service.js:159:            var idPropPaths = topologyMetadataService.getFeatureIDPropPathsForGeoType(geoType),
+/home/mahesh/_thoughtspot/blink/app/src/modules/viz-layout/viz/chart/geomap/base/metadata-services/topology-metadata-service.js:11:blink.app.factory('topologyMetadataService', ['jsonConstants', function (jsonConstants) {
+/home/mahesh/_thoughtspot/callosum/common/src/main/java/com/thoughtspot/callosum/common/config/ConfigInfo.java:223:    private boolean enableSageMetadataService = true;
+/home/mahesh/_thoughtspot/callosum/common/src/main/java/com/thoughtspot/callosum/common/config/ConfigInfo.java:1037:    public boolean isEnableSageMetadataService() {
+/home/mahesh/_thoughtspot/callosum/common/src/main/java/com/thoughtspot/callosum/common/config/ConfigInfo.java:1038:        return enableSageMetadataService;
+/home/mahesh/_thoughtspot/callosum/common/src/main/java/com/thoughtspot/callosum/common/config/ConfigInfo.java:1041:    public void setEnableSageMetadataService(final boolean enableSageMetadataService) {
+/home/mahesh/_thoughtspot/callosum/common/src/main/java/com/thoughtspot/callosum/common/config/ConfigInfo.java:1042:        this.enableSageMetadataService = enableSageMetadataService;
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:99:     * SageMetadataService Thrift Service for handling Sage Metadata requests.
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:101:    private SageMetadataServiceImpl sageMetadataService;
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:146:        if (configInfo.isEnableSageMetadataService()) {
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:147:            LOGGER.info("Starting SageMetadataServiceImpl");
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:148:            sageMetadataService = new SageMetadataServiceImpl(configInfo.getSageMetadataPort());
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:150:            LOGGER.info("Not starting SageMetadataServiceImpl - disabled in config");
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:183:            if (sageMetadataService != null) {
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:184:                sageMetadataService.shutdown();
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/DataManager.java:187:            LOGGER.warn("Exception in shutdown of SageMetadataService ", ex);
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:32:import com.thoughtspot.sage.SageMetadataService;
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:35: * A Thrift server for SageMetadataService interface.
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:40:public class SageMetadataServiceImpl implements SageMetadataService.Iface {
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:45:            ThoughtSpotLogger.getLogger(SageMetadataServiceImpl.class .getName());
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:54:     * @param port is the port for exporting the SageMetadataService Thrift service.
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:56:    public SageMetadataServiceImpl(final int port) {
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:189:         * SageMetadataService before throwing an exception.
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:206:                    SageMetadataService.Processor<SageMetadataServiceImpl> processor =
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:207:                            new SageMetadataService.Processor<SageMetadataServiceImpl>(
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:208:                                    SageMetadataServiceImpl.this);
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:211:                    LOGGER.info("Starting SageMetadataService on port " + port);
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:224:                            + " SageMetadataService, exiting.");
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:236:                    "Ignoring SageMetadataServiceImpl.ServerThread shutdown; TServer null");
+/home/mahesh/_thoughtspot/callosum/data/src/main/java/com/thoughtspot/callosum/data/manager/SageMetadataServiceImpl.java:245:                LOGGER.warn("Interrupted while waiting for SageMetadataService server to exit");
+/home/mahesh/_thoughtspot/callosum/data/src/test/java/com/thoughtspot/callosum/data/DataTest.java:35:            config.setEnableSageMetadataService(false);
+/home/mahesh/_thoughtspot/callosum/dataload/src/test/java/com/thoughtspot/callosum/dataload/DataLoadTest.java:39:            config.setEnableSageMetadataService(false);
+/home/mahesh/_thoughtspot/callosum/generate-sources.py:55:                'thrift/SageMetadataService.thrift',
+/home/mahesh/_thoughtspot/callosum/informatica/src/main/java/com/thoughtspot/callosum/informatica/adapter/connection/Connection.java:244:        configInfo.setEnableSageMetadataService(false);
+/home/mahesh/_thoughtspot/callosum/logback-eclipse.xml:109:    <logger name="com.thoughtspot.callosum.data.manager.SageMetadataServiceImpl" level="INFO" additivity="true">
+/home/mahesh/_thoughtspot/callosum/logback.xml:109:    <logger name="com.thoughtspot.callosum.data.manager.SageMetadataServiceImpl" level="INFO" additivity="false">
+/home/mahesh/_thoughtspot/callosum/metadata/src/main/java/com/thoughtspot/callosum/metadata/utilities/JOOQCodeGenerator.java:59:            config.setEnableSageMetadataService(false);
+/home/mahesh/_thoughtspot/callosum/metadata/src/main/java/com/thoughtspot/callosum/metadata/utilities/LogicalModelExtract.java:53:        config.setEnableSageMetadataService(false);
+/home/mahesh/_thoughtspot/callosum/metadata/src/test/java/com/thoughtspot/callosum/metadata/MetadataTest.java:172:        config.setEnableSageMetadataService(false);
+/home/mahesh/_thoughtspot/callosum/metadata/src/test/java/com/thoughtspot/callosum/metadata/manager/physicalmodel/TableDiffTest.java:174:            .setEnableSageMetadataService(false /* disable sage notification */);
+/home/mahesh/_thoughtspot/callosum/metadata/src/test/java/com/thoughtspot/callosum/metadata/manager/physicalmodel/TableDiffTest.java:191:            .setEnableSageMetadataService(true /* enable sage notification */);
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/RESTService.java:58:import com.thoughtspot.callosum.server.services.metadata.MetadataService;
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/RESTService.java:387:            MetadataService.class, ModelingService.class, SageService.class,
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/a3/CallosumA3Service.java:66:import com.thoughtspot.callosum.server.services.metadata.MetadataService;
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/a3/CallosumA3Service.java:434:        MetadataService metadataService = new MetadataService();
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/admin/AdminService.java:69:import com.thoughtspot.callosum.data.manager.SageMetadataServiceImpl;
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/admin/AdminService.java:230:                    SageMetadataServiceImpl.class.getName(),
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/metadata/MetadataService.java:114:public final class MetadataService extends RESTService {
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/metadata/MetadataService.java:120:            ThoughtSpotLogger.getLogger(MetadataService.class .getName());
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/metadata/MetadataService.java:187:    public MetadataService() {
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/metadata/MetadataService.java:197:    public MetadataService(AlertManagerAccessor alertManagerAccessor) {
+/home/mahesh/_thoughtspot/callosum/server/src/main/java/com/thoughtspot/callosum/server/services/sage/WorksheetService.java:89: * worksheets is handled in respective services (MetadataService, SecurityService) similar to all
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/AuthorizationTest.java:106:                this.invokeMetadataServiceCRUD(clients[i], forbidden[i][j++],
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/AuthorizationTest.java:108:                this.invokeMetadataServiceCRUD(clients[i], forbidden[i][j++],
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/AuthorizationTest.java:200:     * @param client client to use for invoking user CRUD operations through MetadataService
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/AuthorizationTest.java:204:    private void invokeMetadataServiceCRUD(final Client client, final boolean forbidden,
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/AuthorizationTest.java:208:        this.assertForbiddenStatus(response.getStatus(), forbidden, "MetadataServiceCRUD", client);
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/AuthorizationTest.java:211:        this.assertForbiddenStatus(response.getStatus(), forbidden, "MetadataServiceCRUD", client);
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/AuthorizationTest.java:213:        this.assertForbiddenStatus(response.getStatus(), forbidden, "MetadataServiceCRUD", client);
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/AuthorizationTest.java:216:        this.assertForbiddenStatus(response.getStatus(), forbidden, "MetadataServiceCRUD", client);
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/ServiceTest.java:74:import com.thoughtspot.callosum.server.services.metadata.MetadataService;
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/ServiceTest.java:224:            config.setEnableSageMetadataService(false);
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/ServiceTest.java:2131:        formParams.add(MetadataService.PARAM_TAG_GUID_ID, getIdsString(tagIds));
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/ServiceTest.java:2166:        formParams.add(MetadataService.PARAM_TAG_GUID_ID, getIdsString(tagIds));
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/ServiceTest.java:2710:        formParams.add(MetadataService.PARAM_TARGET_BOOK_ID, tgtBookId.toString());
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/ServiceTest.java:2727:        formParams.add(MetadataService.PARAM_TARGET_BOOK_ID, tgtBookId.toString());
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuite.java:18:import com.thoughtspot.callosum.server.services.metadata.MetadataServicePinboardNonParamTest;
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuite.java:19:import com.thoughtspot.callosum.server.services.metadata.MetadataServicePinboardTest;
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuite.java:20:import com.thoughtspot.callosum.server.services.metadata.MetadataServiceTagTest;
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuite.java:21:import com.thoughtspot.callosum.server.services.metadata.MetadataServiceTest;
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuite.java:22:import com.thoughtspot.callosum.server.services.metadata.MetadataServiceWorksheetTest;
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuite.java:54:    MetadataServiceTest.class,
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuite.java:55:    MetadataServicePinboardTest.class,
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuite.java:56:    MetadataServicePinboardNonParamTest.class,
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuite.java:57:    MetadataServiceTagTest.class,
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuite.java:58:    MetadataServiceWorksheetTest.class,
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuiteUnit.java:8:import com.thoughtspot.callosum.server.services.metadata.MetadataServiceUnitTest;
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/TestSuiteUnit.java:26:    MetadataServiceUnitTest.class,
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServicePinboardNonParamTest.java:57:public class MetadataServicePinboardNonParamTest extends ServiceTest {
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServicePinboardNonParamTest.java:62:            ThoughtSpotLogger.getLogger(MetadataServicePinboardNonParamTest.class .getName());
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServicePinboardTest.java:51:public class MetadataServicePinboardTest extends ServiceTest {
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServicePinboardTest.java:56:            ThoughtSpotLogger.getLogger(MetadataServicePinboardTest.class .getName());
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServicePinboardTest.java:124:    public MetadataServicePinboardTest(final String questionFile) {
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceTagTest.java:45:public class MetadataServiceTagTest extends ServiceTest {
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceTagTest.java:50:            ThoughtSpotLogger.getLogger(MetadataServiceTagTest.class .getName());
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceTest.java:82:public class MetadataServiceTest extends ServiceTest {
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceTest.java:87:            ThoughtSpotLogger.getLogger(MetadataServiceTest.class .getName());
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceTest.java:144:            queryParams.add(MetadataService.PARAM_CATEGORY, MetadataCategoryEnum.MY.name());
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceTest.java:168:            queryParams.remove(MetadataService.PARAM_CATEGORY);
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceTest.java:169:            queryParams.add(MetadataService.PARAM_CATEGORY, MetadataCategoryEnum.ALL.name());
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceUnitTest.java:41:public class MetadataServiceUnitTest extends ServerUnitTestBase {
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceUnitTest.java:129:            MetadataService metadataService = new MetadataService(mockAlertManagerAccessor);
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceWorksheetTest.java:41:public class MetadataServiceWorksheetTest extends ServiceTest {
+/home/mahesh/_thoughtspot/callosum/server/src/test/java/com/thoughtspot/callosum/server/services/metadata/MetadataServiceWorksheetTest.java:46:            ThoughtSpotLogger.getLogger(MetadataServiceWorksheetTest.class .getName());
+/home/mahesh/_thoughtspot/mobile/ios/src/Controllers/ChartViz/ChartController.swift:19://            MetadataService.getMetadataDetail(
+/home/mahesh/_thoughtspot/mobile/ios/src/Controllers/HomeScreenController.swift:44:        MetadataService.getMetadataDetail(
+/home/mahesh/_thoughtspot/mobile/ios/src/Controllers/HomeScreenController.swift:127:        MetadataService.getAllPinboardReportBook(
+/home/mahesh/_thoughtspot/mobile/ios/src/Controllers/PinboardDetailsViewController.swift:52:        MetadataService.getMetadataDetail(
+/home/mahesh/_thoughtspot/mobile/ios/src/Services/MetadataService.swift:8:class MetadataService {
+/home/mahesh/_thoughtspot/mobile/ios/thoughtspot.xcodeproj/project.pbxproj:65:		61C6D32D1B3F94AF00646761 /* MetadataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C6D32C1B3F94AF00646761 /* MetadataService.swift */; };
+/home/mahesh/_thoughtspot/mobile/ios/thoughtspot.xcodeproj/project.pbxproj:211:		61C6D32C1B3F94AF00646761 /* MetadataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataService.swift; sourceTree = "<group>"; };
+/home/mahesh/_thoughtspot/mobile/ios/thoughtspot.xcodeproj/project.pbxproj:423:				61C6D32C1B3F94AF00646761 /* MetadataService.swift */,
+/home/mahesh/_thoughtspot/mobile/ios/thoughtspot.xcodeproj/project.pbxproj:763:				61C6D32D1B3F94AF00646761 /* MetadataService.swift in Sources */,
+/home/mahesh/_thoughtspot/net/SConscript:265:             'thrift:SageMetadataService_thriftlib'])
+/home/mahesh/_thoughtspot/production/orion/tomcat/callosum/logback.xml:131:    <logger name="com.thoughtspot.callosum.data.manager.SageMetadataServiceImpl" level="INFO" additivity="false">
+/home/mahesh/_thoughtspot/sage/common/SConscript:147:             'thrift:SageMetadataService_thriftlib' ])
+/home/mahesh/_thoughtspot/sage/common/sage_utils.hpp:28:#include "thrift/SageMetadataService.h"
+/home/mahesh/_thoughtspot/sage/metadata/SConscript:15:             'thrift:SageMetadataService_thriftlib' ])
+/home/mahesh/_thoughtspot/sage/metadata/SConscript:123:             'thrift:SageMetadataService_thriftlib' ])
+/home/mahesh/_thoughtspot/sage/metadata/SConscript:215:             'thrift:SageMetadataService_thriftlib' ])
+/home/mahesh/_thoughtspot/sage/metadata/callosum_client.cpp:40:      &SageMetadataServiceClient::GetMetadataHeader, request, response);
+/home/mahesh/_thoughtspot/sage/metadata/callosum_client.cpp:46:      &SageMetadataServiceClient::GetLogicalMetadata, request, response);
+/home/mahesh/_thoughtspot/sage/metadata/callosum_client.hpp:14:#include "thrift/SageMetadataService.h"
+/home/mahesh/_thoughtspot/sage/metadata/callosum_client.hpp:56:  ::net::rpc::ThriftClient<SageMetadataServiceClient> thrift_client_;
+/home/mahesh/_thoughtspot/sage/metadata/metadata_updater.hpp:20:#include "thrift/SageMetadataService.h"
+/home/mahesh/_thoughtspot/sage/metadata/testutil/SConscript:12:             'thrift:SageMetadataService_thriftlib' ])
+/home/mahesh/_thoughtspot/sage/metadata/testutil/callosum_client.hpp:16:#include "thrift/SageMetadataService.h"
+/home/mahesh/_thoughtspot/sage/server/sage_master_main.cpp:66:              " Address of a server exporting the SageMetadataService thrift"
+/home/mahesh/_thoughtspot/thrift/SConscript:43:    src = 'SageMetadataService.thrift',
+/home/mahesh/_thoughtspot/thrift/SConscript:44:    services = [ 'SageMetadataService' ],
+/home/mahesh/_thoughtspot/thrift/SageMetadataService.thrift:6:// SageMetadataService is a service exposed by Callosum.  Sage server uses
+/home/mahesh/_thoughtspot/thrift/SageMetadataService.thrift:8:service SageMetadataService {

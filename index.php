@@ -13,7 +13,7 @@ if ($q) {
         // so hardcoding some results, so that we can develop on mac.
         $results = array_filter(
             explode("\n", file_get_contents("sample_results.txt")));
-        $q = "FalconRequest.Builder";
+        $q = "MetadataService";
     } else {
         $options = "-n";
         if (!$cs) $options .= " -i";
