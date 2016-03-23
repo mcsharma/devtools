@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var URI = require('urijs');
 var $ = require('jquery');
+var Utils = require('./Utils.js');
 
 var RootUI = React.createClass({
 
@@ -61,12 +62,8 @@ var RootUI = React.createClass({
         if (event.target.tagName.toLowerCase() === 'a') {
             window.location.href = event.target.href;
         }
-        var text = window.getSelection().toString();
-        var lines = 0;
-        text.split("\n").forEach(function (line) {
-            if (line != "") lines++
-        });
-        if (lines > 1) {
+        var text = Utils.trimNewlines(window.getSelection().toString());
+        if (text.split("\n").length > 1) {
             // selected multiple line, we probably don't want to show hintCard 
             // in this case
             this.setState({cardText: ""});
@@ -220,7 +217,6 @@ var RootUI = React.createClass({
             }
             regexSafeQuery += c;
         }
-        console.log(regexSafeQuery);
         var regex = new RegExp("(" + regexSafeQuery + ")", "g"
             + (this.props.data.cs ? "" : "i"));
         // TODO escape HTML
