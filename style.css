@@ -9,6 +9,10 @@ body {
     border-bottom: 1px solid #A0A0A0;
 }
 
+.mainTable {
+    margin-top: 20px;
+}
+
 .query {
     width: 160px;
     height: 22px;
@@ -31,7 +35,7 @@ body {
 }
 
 .resultsTitle {
-    margin-top: 15px;
+    margin-top: 25px;
     margin-left: 8px;
     margin-bottom: 8px;
     font-size: 18px;
@@ -71,6 +75,8 @@ body {
 
 .sectionSeparator {
     border-top: 1px solid #A0A0A0;
-    margin-top: 15px;
-    margin-bottom: 20px;
+}
+
+.marginTop30 {
+    margin-top: 30px;
 }

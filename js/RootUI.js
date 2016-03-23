@@ -223,15 +223,27 @@ var RootUI = React.createClass({
 
     _renderResults: function (topResults, results) {
         var rows = [];
-        rows.push(this._getRowMarkup(
-            null,
-            <div className="resultsTitle">Top Results</div>)
-        );
-        rows = rows.concat(this._getResultRows(topResults));
-        rows.push(this._getRowMarkup(
-            null,
-            <div className="sectionSeparator"/>)
-        );
+       // topResults = {};
+        if (!$.isEmptyObject(topResults)) {
+            rows.push(this._getRowMarkup(
+                null,
+                <div className="resultsTitle">Top Results</div>)
+            );
+            rows = rows.concat(this._getResultRows(topResults));
+            rows.push(this._getRowMarkup(
+                null,
+                <div className="sectionSeparator"/>)
+            );
+            rows.push(this._getRowMarkup(
+                null,
+                <div className="resultsTitle">All Results</div>)
+            );
+        } else {
+            rows.push(this._getRowMarkup(
+                null,
+                <div className="marginTop30"></div>)
+            );
+        }
         rows = rows.concat(this._getResultRows(results));
         return <table
             className="code"
