@@ -238,7 +238,7 @@ var RootUI = React.createClass({
                 null,
                 <div className="resultsTitle">All Results</div>)
             );
-        } else {
+        } else if (!$.isEmptyObject(results)) {
             rows.push(this._getRowMarkup(
                 null,
                 <div className="marginTop30"></div>)
