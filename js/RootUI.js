@@ -151,7 +151,8 @@ var RootUI = React.createClass({
                         name="q"
                         defaultValue={this.props.data.q}
                         placeholder="Type text and hit enter"
-                        onKeyDown={this._onQueryChange}/>
+                        onKeyDown={this._onQueryChange}
+                        ref={function (input) {input.focus();}}/>
                     {resultsSummaryUI}
                     <span className="filters">
                         <span className="filter">File type:</span>
