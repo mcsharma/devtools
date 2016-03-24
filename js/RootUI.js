@@ -11,6 +11,12 @@ var RootUI = React.createClass({
         };
     },
 
+    componentDidMount: function () {
+        if (!this.props.data.q) {
+            this.refs.queryInput.focus();
+        }
+    },
+
     _getRowMarkup: function (leftMarkup, rightMarkup) {
         if (typeof this.key == 'undefined') {
             this.key = 0;
@@ -152,7 +158,8 @@ var RootUI = React.createClass({
                         name="q"
                         defaultValue={this.props.data.q}
                         placeholder="Type text and hit enter"
-                        onKeyDown={this._onQueryChange}/>
+                        onKeyDown={this._onQueryChange}
+                        ref="queryInput"/>
                     {resultsSummaryUI}
                     <span className="filters">
                         <span className="filter">File type:</span>
