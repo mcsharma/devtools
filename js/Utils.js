@@ -9,7 +9,7 @@ var Utils = {
         return q;
     },
 
-    isTopResult: function (filePath, line, query) {
+    isTopResult: function (filePath, line, query, caseSensitive) {
         // Only supporting Java for now.
         query = this.toRegexSafe(query);
         if (this.isJavaFile(filePath)) {
@@ -18,7 +18,10 @@ var Utils = {
                 "(\\s|^)interface\\s+" + query + "(\\{|\\s+)" // interface
             ];
             for (var i = 0; i < regexList.length; i++) {
-                if (line.match(new RegExp(regexList[i], "g"))) {
+                if (line.match(new RegExp(
+                        regexList[i],
+                        "g" + (caseSensitive ? "" : "i")))
+                ) {
                     return true;
                 }
             }

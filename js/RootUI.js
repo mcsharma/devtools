@@ -108,7 +108,11 @@ var RootUI = React.createClass({
             count++;
             results[filePath] = results[filePath] || {};
             results[filePath][lineNum] = line;
-            if (Utils.isTopResult(filePath, line, this.props.data.q)) {
+            if (Utils.isTopResult(
+                    filePath,
+                    line,
+                    this.props.data.q,
+                    this.props.data.cs)) {
                 topCount++;
                 topResults[filePath] = topResults[filePath] || {};
                 topResults[filePath][lineNum] = line;
