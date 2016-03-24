@@ -199,25 +199,16 @@ var RootUI = React.createClass({
         );
     },
 
-    _highlightQuery: function (text, query) {
-        // chars that should be escaped
-        // if we are using them in a regex want them to be treated as normal
-        // characters.
-        var charsToEscape = ".^$*+-?()[]{}\|";
-        var regexSafeQuery = "";
-        for (var i = 0; i < query.length; i++) {
-            var c = query[i];
-            if (charsToEscape.indexOf(c) !== -1) {
-                regexSafeQuery += "\\";
-            }
-            regexSafeQuery += c;
-        }
+    _htmlizeAndHighlight: function (text, query) {
+        text = Utils.htmlize(text);
+        query = Utils.htmlize(query);
+
+        query = Utils.toRegexSafe(query);
         if (this.props.data.ww) {
-            regexSafeQuery = "\\b" + regexSafeQuery + "\\b";
+            query = "\\b" + query + "\\b";
         }
-        var regex = new RegExp("(" + regexSafeQuery + ")", "g"
+        var regex = new RegExp("(" + query + ")", "g"
             + (this.props.data.cs ? "" : "i"));
-        // TODO escape HTML
         return text.replace(regex, "<strong>$1</strong>");
     },
 
@@ -270,7 +261,7 @@ var RootUI = React.createClass({
             for (var lineNum in results[filePath]) {
                 if (!results[filePath].hasOwnProperty(lineNum)) continue;
                 var line = results[filePath][lineNum];
-                var highlightedLine = this._highlightQuery(
+                var highlightedLine = this._htmlizeAndHighlight(
                     line,
                     this.props.data.q
                 );

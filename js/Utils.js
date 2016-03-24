@@ -11,6 +11,7 @@ var Utils = {
 
     isTopResult: function (filePath, line, query) {
         // Only supporting Java for now.
+        query = this.toRegexSafe(query);
         if (this.isJavaFile(filePath)) {
             var regexList = [
                 "(\\s|^)class\\s+" + query + "(\\{|\\s+)", // class definition
@@ -27,6 +28,33 @@ var Utils = {
 
     isJavaFile: function (filePath) {
         return filePath.endsWith(".java");
+    },
+    
+    toRegexSafe: function (str) {
+        var charsToEscape = ".^$*+-?()[]{}\|";
+        var regexSafeStr = "";
+        for (var i = 0; i < str.length; i++) {
+            var c = str[i];
+            if (charsToEscape.indexOf(c) !== -1) {
+                regexSafeStr += "\\";
+            }
+            regexSafeStr += c;
+        }
+        return regexSafeStr;
+    },
+
+    htmlize: function (text) {
+        var entityMap = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': '&quot;',
+            "'": '&#39;',
+            "/": '&#x2F;'
+        };
+        return text.replace(/[&<>"'\/]/g, function (s) {
+            return entityMap[s];
+        });
     }
 };
 
