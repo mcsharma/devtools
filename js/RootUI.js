@@ -209,6 +209,8 @@ var RootUI = React.createClass({
 
         query = Utils.toRegexSafe(query);
         if (this.props.data.ww) {
+            // Don't highlight partial matches if original query was for
+            // whole-word match.
             query = "\\b" + query + "\\b";
         }
         var regex = new RegExp("(" + query + ")", "g"
