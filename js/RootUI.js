@@ -5,12 +5,6 @@ var $ = require('jquery');
 var Utils = require('./Utils.js');
 
 var RootUI = React.createClass({
-
-    getInitialState: function () {
-        return {
-        };
-    },
-
     componentDidMount: function () {
         if (!this.props.data.q) {
             this.refs.queryInput.focus();
@@ -77,17 +71,19 @@ var RootUI = React.createClass({
             window.location.href = event.target.href;
         }
         var text = Utils.trimNewlines(window.getSelection().toString());
-        if (text.split("\n").length > 1) {
+        if (!text.trim() || text.split("\n").length > 1) {
             // selected multiple line, we probably don't want to show hintCard 
             // in this case
-            this.setState({cardText: ""});
+            $(this.refs.hintCard).hide();
             return;
         }
-        this.setState({
-            cardText: text,
-            cardX: event.pageX + 5,
-            cardY: event.pageY - (30 + 10) // Keep it same as the width of hintCard
-        });
+        this.refs.hintCard.style.left = event.pageX + 5;
+        this.refs.hintCard.style.top = event.pageY - (30 + 10);
+        this.refs.hintCard.style.width =
+            Math.min(Math.max(200, text.length * 10), 500);
+        $(this.refs.hintCard).find('a').text(text);
+        $(this.refs.hintCard).find('a').attr('href', this._getQueryUrl(text));
+        $(this.refs.hintCard).show();
     },
 
     _getQueryUrl: function (q) {
@@ -108,7 +104,8 @@ var RootUI = React.createClass({
                 lineNum = parts[1],
                 line = parts.slice(2).join(":");
             // filter
-            if (this.props.data.fileType && !filePath.endsWith("." + this.props.data.fileType)) {
+            if (this.props.data.fileType &&
+                !filePath.endsWith("." + this.props.data.fileType)) {
                 return;
             }
             count++;
@@ -124,34 +121,22 @@ var RootUI = React.createClass({
                 topResults[filePath][lineNum] = line;
             }
         }.bind(this));
-        var resultsSummaryUI = null, allResultsTitleUI = null;
+        var resultsSummaryUI = null;
         if (this.props.data.q) {
             resultsSummaryUI = <span className="resultsCount">
-                <strong>{count}</strong> results ({this.props.data.execTimeMs}ms)
+                <strong>{count}</strong> results
+                ({this.props.data.execTimeMs}ms)
             </span>;
-            allResultsTitleUI =
-                <div className="resultsTitle"><strong>All Results:</strong>
-                </div>;
-        }
-
-        var hintCard = null;
-        if (this.state.cardText && this.state.cardText.trim()) {
-            // Note that here we don't want to trim, because the search is
-            // sensitive to leading/trailing whitespaces.
-            var line = this.state.cardText;
-            hintCard = <div
-                className="hintCard"
-                style={{
-                    left: this.state.cardX || 0,
-                    top: this.state.cardY || 0,
-                    width: Math.min(Math.max(200, line.length * 10), 500)}}>
-                Search for:
-                <div className="code"><a href={this._getQueryUrl(line)}>{line}</a></div>
-            </div>
         }
         return (
             <div>
-                {hintCard}
+                <div
+                    className="hintCard"
+                    ref="hintCard"
+                    style={{display: "none"}}>
+                    Search for:
+                    <div className="code"><a /></div>
+                </div>
                 <div className="topBar">
                     <input
                         className="query"
