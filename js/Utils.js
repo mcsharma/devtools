@@ -12,18 +12,33 @@ var Utils = {
     isTopResult: function (filePath, line, query, caseSensitive) {
         // Only supporting Java for now.
         query = this.toRegexSafe(query);
+        var regexList = [];
         if (this.isJavaFile(filePath)) {
-            var regexList = [
+            regexList = [
                 "(\\s|^)class\\s+" + query + "(\\{|\\s+)", // class definition
-                "(\\s|^)interface\\s+" + query + "(\\{|\\s+)" // interface
+                "(\\s|^)interface\\s+" + query + "(\\{|\\s+)", // interface
+                "(public|protected|private|static|\\s)\\s+[\\w\\<\\>\\[\\]]+" +
+                  "\\s+(" + query + ")\\s*\\([^\\)]*\\)\\s*(\\{?|[^;])" // method definition
             ];
-            for (var i = 0; i < regexList.length; i++) {
-                if (line.match(new RegExp(
-                        regexList[i],
-                        "g" + (caseSensitive ? "" : "i")))
-                ) {
-                    return true;
-                }
+        } else if (this.isGoFile(filePath)) {
+            regexList = [
+                "type\\s+"+query+"\\s+struct",    // struct definition
+                "type\\s+"+query+"\\s+interface",  // interface definition
+                "func\\s+()?"+query+"\\s*\\("     // function definition
+            ];
+        } else if (this.isPyFile(filePath)) {
+            regexList = [
+                "^\\s*def ("+query+")\\s*\\(\\s*\\S+\\s*(?:,\\s*\\S+)*\\):", // function
+                "^\\s*class "+query+":" // class
+            ];
+        }
+
+        for (var i = 0; i < regexList.length; i++) {
+            if (line.match(new RegExp(
+                    regexList[i],
+                    "g" + (caseSensitive ? "" : "i")))
+            ) {
+                return true;
             }
         }
         return false;
@@ -31,6 +46,14 @@ var Utils = {
 
     isJavaFile: function (filePath) {
         return filePath.endsWith(".java");
+    },
+
+    isGoFile: function (filePath) {
+        return filePath.endsWith(".go");
+    },
+
+    isPyFile: function (filePath) {
+        return filePath.endsWith(".py");
     },
     
     toRegexSafe: function (str) {
