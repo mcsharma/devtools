@@ -24,7 +24,7 @@ var Utils = {
             regexList = [
                 "type\\s+"+query+"\\s+struct",    // struct definition
                 "type\\s+"+query+"\\s+interface",  // interface definition
-                "func\\s+()?"+query+"\\s*\\("     // function definition
+                "func\\s+(\\(\\w+\\s+\\*\\w+\\)\\s+)?"+query+"\\s*\\(" // function definition
             ];
         } else if (this.isPyFile(filePath)) {
             regexList = [
