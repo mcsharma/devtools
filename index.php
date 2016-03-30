@@ -4,6 +4,7 @@ $q = $_GET['q'] ?: "";
 $fileType = $_GET['fileType'] ?: "";
 $cs = $_GET['cs'] === "1" ? 1 : 0;
 $ww = $_GET['ww'] === "1" ? 1 : 0;
+
 $results = array();
 $exec_time_ms = 0; // in milliseconds
 if ($q) {
@@ -13,7 +14,7 @@ if ($q) {
         // so hardcoding some results, so that we can develop on mac.
         $results = array_filter(
             explode("\n", file_get_contents("sample_results.txt")));
-        $q = "MetadataService";
+        $q = "KillProcesses";
     } else {
         $options = "-n";
         if (!$cs) $options .= " -i";
@@ -40,13 +41,13 @@ $data = json_encode(array(
 
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css"></link>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="js/bundle.js"></script>
     <script>
         var responseData = <?php echo $data;?>;
     </script>
 </head>
 <body>
-<div id="container"/>
+<div id="container"></div>
 </body>
 </html>

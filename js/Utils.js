@@ -10,7 +10,6 @@ var Utils = {
     },
 
     isTopResult: function (filePath, line, query, caseSensitive) {
-        // Only supporting Java for now.
         query = this.toRegexSafe(query);
         var regexList = [];
         if (this.isJavaFile(filePath)) {
