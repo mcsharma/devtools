@@ -9,7 +9,20 @@ var Utils = {
         return q;
     },
 
-    isTopResult: function (filePath, line, query, caseSensitive) {
+    isTopResultFile: function (filePath, results, query, caseSensitive) {
+        for (var lineNum in results) {
+            if (this.isTopResultLine(
+                    filePath,
+                    results[lineNum],
+                    query,
+                    caseSensitive)) {
+                return true;
+            }
+        }
+        return false;
+    },
+
+    isTopResultLine: function (filePath, line, query, caseSensitive) {
         query = this.toRegexSafe(query);
         var regexList = [];
         if (this.isJavaFile(filePath)) {

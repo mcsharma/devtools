@@ -93,34 +93,27 @@ var RootUI = React.createClass({
     },
 
     render: function () {
-        var i = 0;
-        var rawResults = this.props.data.results;
+        var unfilteredResults = this.props.data.results;
         var results = {};
         var topResults = {};
-        var count = 0, topCount = 0;
-        rawResults.forEach(function (result) {
-            var parts = result.substr(26).split(":");
-            var filePath = parts[0],
-                lineNum = parts[1],
-                line = parts.slice(2).join(":");
-            // filter
+        var count = 0;
+        for(var filePath in unfilteredResults) {
             if (this.props.data.fileType &&
                 !filePath.endsWith("." + this.props.data.fileType)) {
-                return;
+                continue;
             }
-            count++;
-            results[filePath] = results[filePath] || {};
-            results[filePath][lineNum] = line;
-            if (Utils.isTopResult(
+            results[filePath] = unfilteredResults[filePath];
+            if (Utils.isTopResultFile(
                     filePath,
-                    line,
+                    unfilteredResults[filePath],
                     this.props.data.q,
                     this.props.data.cs)) {
-                topCount++;
-                topResults[filePath] = topResults[filePath] || {};
-                topResults[filePath][lineNum] = line;
+                topResults[filePath] = unfilteredResults[filePath];
             }
-        }.bind(this));
+            for(var _ in unfilteredResults[filePath]) {
+                count++;
+            }
+        }
         var resultsSummaryUI = null;
         if (this.props.data.q) {
             resultsSummaryUI = <span className="resultsCount">

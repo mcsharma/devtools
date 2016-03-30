@@ -8,6 +8,7 @@ $ww = $_GET['ww'] === "1" ? 1 : 0;
 $results = array();
 $exec_time_ms = 0; // in milliseconds
 if ($q) {
+
     $time_start = microtime(true);
     if (PHP_OS == "Darwin") {
         // Hardcoded sample results for mac. It hard to setup csearch index on mac.
@@ -26,12 +27,22 @@ if ($q) {
     }
     $time_end = microtime(true);
     $exec_time_ms = ($time_end - $time_start) * 1000;
+
+    $finalResults = array();
+    foreach ($results as $rawResult) {
+        $result = substr($rawResult, 26);
+        $parts = explode(':', $result);
+        $filePath = array_shift($parts);
+        $lineNum = intval(array_shift($parts));
+        $line = implode(':', $parts);
+        $finalResults[$filePath][$lineNum] = $line;
+    }
 }
 
 $data = json_encode(array(
     "prefix" => "http://www.thoughtspot.co/diffusion/2/browse/master/",
     "q" => $q,
-    "results" => $results,
+    "results" => $finalResults,
     "fileType" => $fileType,
     "cs" => $cs,
     "ww" => $ww,
