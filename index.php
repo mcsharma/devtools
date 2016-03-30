@@ -43,18 +43,21 @@ if ($q) {
         $filePrefix = substr($filePath, 0, 26);
         $finalResults[substr($filePath, 26)][$lineNum] = $line;
     }
+
     if ($contextLength) {
         $resultsWithContext = array();
         foreach ($finalResults as $filePath => $results) {
             $allLines = array();
             foreach ($results as $index => $line) {
-                for ($i = max(0, $index - $contextLength); $i <= $index + $contextLength; $i++) {
+                for ($i = max(0, $index - $contextLength);
+                     $i <= $index + $contextLength;
+                     $i++) {
                     $allLines[$i] = 1;
                 }
             }
             $file = new SplFileObject($filePrefix.$filePath);
             foreach ($allLines as $index => $_) {
-                $file->seek($index - 1);
+                $file->seek(max(0, $index- 2));
                 $resultsWithContext[$filePath][$index] = $file->getCurrentLine();
             }
         }

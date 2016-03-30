@@ -244,13 +244,18 @@ var RootUI = React.createClass({
             rows.push(mainRow);
             for (var lineNum in results[filePath]) {
                 var line = results[filePath][lineNum];
-                var highlightedLine = this._htmlizeAndHighlight(
+                var processedLine = this._htmlizeAndHighlight(
                     line,
                     this.props.data.q
                 );
+                // means this line is not highlighted using <strong> which
+                // means this line didn't match the query, which means this was
+                // a context line.
+                var isContext = processedLine.indexOf('<') === -1;
+                var className = isContext ? "contextCode" : "";
                 var individualRow = this._getRowMarkup(
-                    <a href={fileLink+"$"+lineNum}>{lineNum}</a>,
-                    <div dangerouslySetInnerHTML={{__html: highlightedLine}}>
+                    isContext ? null : <a href={fileLink+"$"+lineNum}>{lineNum}</a>,
+                    <div className={className} dangerouslySetInnerHTML={{__html: processedLine}}>
                     </div>
                 );
                 rows.push(individualRow);
