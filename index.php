@@ -35,6 +35,7 @@ if ($q) {
     $exec_time_ms = ($time_end - $time_start) * 1000;
 
     $filePrefix = "";
+    $count = count($results);
     foreach ($results as $rawResult) {
         $parts = explode(':', $rawResult);
         $filePath = array_shift($parts);
@@ -68,10 +69,12 @@ if ($q) {
 $data = json_encode(array(
     "prefix" => "http://www.thoughtspot.co/diffusion/2/browse/master/",
     "q" => $q,
+    "count" => $count,
     "results" => $finalResults,
     "fileType" => $fileType,
     "cs" => $cs,
     "ww" => $ww,
+    'context' => $contextLength,
     "execTimeMs" => intval($exec_time_ms),
 ));
 ?>

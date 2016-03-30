@@ -54,6 +54,17 @@ var RootUI = React.createClass({
         window.location.href = uri;
     },
 
+    _onShowContext: function (event) {
+        var showContext = event.target.checked;
+        var uri = URI(window.location.href);
+        if (showContext) {
+            uri.setQuery("context", 2);
+        } else {
+            uri.removeQuery("context");
+        }
+        window.location.href = uri;
+    },
+
     _onQueryChange: function (event) {
         if (event.keyCode != 13) {
             return;
@@ -95,7 +106,6 @@ var RootUI = React.createClass({
     render: function () {
         var results = this.props.data.results;
         var topResults = {};
-        var count = 0;
         for(var filePath in results) {
             if (Utils.isTopResultFile(
                     filePath,
@@ -104,14 +114,11 @@ var RootUI = React.createClass({
                     this.props.data.cs)) {
                 topResults[filePath] = results[filePath];
             }
-            for(var _ in results[filePath]) {
-                count++;
-            }
         }
         var resultsSummaryUI = null;
         if (this.props.data.q) {
             resultsSummaryUI = <span className="resultsCount">
-                <strong>{count}</strong> results
+                <strong>{this.props.data.count}</strong> results
                 ({this.props.data.execTimeMs}ms)
             </span>;
         }
@@ -127,7 +134,6 @@ var RootUI = React.createClass({
                 <div className="topBar">
                     <input
                         className="query"
-                        name="q"
                         defaultValue={this.props.data.q}
                         placeholder="Type text and hit enter"
                         onKeyDown={this._onQueryChange}
@@ -137,7 +143,6 @@ var RootUI = React.createClass({
                         <span className="filter">File type:</span>
                         <select
                             className="fileTypeSelector"
-                            name="fileType"
                             value={this.props.data.fileType}
                             onChange={this._onFileTypeChange}>
                             <option value="">all</option>
@@ -151,13 +156,11 @@ var RootUI = React.createClass({
                         {this.props.data.cs ?
                             <input
                                 type="checkbox"
-                                name="cs"
                                 onClick={this._onCaseChange}
                                 defaultChecked="checked"
                             /> :
                             <input
                                 type="checkbox"
-                                name="cs"
                                 onClick={this._onCaseChange}
                             />
                         }
@@ -165,14 +168,24 @@ var RootUI = React.createClass({
                         {this.props.data.ww ?
                             <input
                                 type="checkbox"
-                                name="ww"
                                 onClick={this._onWholeWordCheck}
                                 defaultChecked="checked"
                             /> :
                             <input
                                 type="checkbox"
-                                name="ww"
                                 onClick={this._onWholeWordCheck}
+                            />
+                        }
+                        <span className="filter">Show context:</span>
+                        {this.props.data.context ?
+                            <input
+                                type="checkbox"
+                                onClick={this._onShowContext}
+                                defaultChecked="checked"
+                            /> :
+                            <input
+                                type="checkbox"
+                                onClick={this._onShowContext}
                             />
                         }
                     </span>
@@ -199,7 +212,6 @@ var RootUI = React.createClass({
 
     _renderResults: function (topResults, results) {
         var rows = [];
-       // topResults = {};
         if (!$.isEmptyObject(topResults)) {
             rows.push(this._getRowMarkup(
                 null,
@@ -254,8 +266,12 @@ var RootUI = React.createClass({
                 var isContext = processedLine.indexOf('<') === -1;
                 var className = isContext ? "contextCode" : "";
                 var individualRow = this._getRowMarkup(
-                    isContext ? null : <a href={fileLink+"$"+lineNum}>{lineNum}</a>,
-                    <div className={className} dangerouslySetInnerHTML={{__html: processedLine}}>
+                    isContext ?
+                        null :
+                        <a href={fileLink+"$"+lineNum}>{lineNum}</a>,
+                    <div
+                        className={className}
+                        dangerouslySetInnerHTML={{__html: processedLine}}>
                     </div>
                 );
                 rows.push(individualRow);
