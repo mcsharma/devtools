@@ -21,7 +21,7 @@ if ($q) {
         if (!$cs) {
             $options .= " -i";
         }
-        if ($filePath) {
+        if ($fileType) {
             $options .= " -f \\.".$fileType."$";
         }
         $escaped_q = addslashes(preg_quote($q));
