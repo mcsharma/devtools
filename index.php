@@ -18,7 +18,12 @@ if ($q) {
         $q = "KillProcesses";
     } else {
         $options = "-n";
-        if (!$cs) $options .= " -i";
+        if (!$cs) {
+            $options .= " -i";
+        }
+        if ($filePath) {
+            $options .= " -f \\.".$fileType."$";
+        }
         $escaped_q = addslashes(preg_quote($q));
         if ($ww) {
             $escaped_q = "\\b".$escaped_q."\\b";

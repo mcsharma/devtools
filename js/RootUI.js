@@ -93,24 +93,18 @@ var RootUI = React.createClass({
     },
 
     render: function () {
-        var unfilteredResults = this.props.data.results;
-        var results = {};
+        var results = this.props.data.results;
         var topResults = {};
         var count = 0;
-        for(var filePath in unfilteredResults) {
-            if (this.props.data.fileType &&
-                !filePath.endsWith("." + this.props.data.fileType)) {
-                continue;
-            }
-            results[filePath] = unfilteredResults[filePath];
+        for(var filePath in results) {
             if (Utils.isTopResultFile(
                     filePath,
-                    unfilteredResults[filePath],
+                    results[filePath],
                     this.props.data.q,
                     this.props.data.cs)) {
-                topResults[filePath] = unfilteredResults[filePath];
+                topResults[filePath] = results[filePath];
             }
-            for(var _ in unfilteredResults[filePath]) {
+            for(var _ in results[filePath]) {
                 count++;
             }
         }
