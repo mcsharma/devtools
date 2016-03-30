@@ -233,7 +233,6 @@ var RootUI = React.createClass({
     _getResultRows: function (results) {
         var rows = [];
         for (var filePath in results) {
-            if (!results.hasOwnProperty(filePath)) continue;
             var fileLink = this.props.data.prefix + filePath;
             var fileHref =
                 fileLink + "$" +
@@ -244,7 +243,6 @@ var RootUI = React.createClass({
             );
             rows.push(mainRow);
             for (var lineNum in results[filePath]) {
-                if (!results[filePath].hasOwnProperty(lineNum)) continue;
                 var line = results[filePath][lineNum];
                 var highlightedLine = this._htmlizeAndHighlight(
                     line,

@@ -4,9 +4,10 @@ $q = $_GET['q'] ?: "";
 $fileType = $_GET['fileType'] ?: "";
 $cs = $_GET['cs'] === "1" ? 1 : 0;
 $ww = $_GET['ww'] === "1" ? 1 : 0;
-
+$contextLength = intval($_GET['context'] ?: '0');
 $results = array();
 $exec_time_ms = 0; // in milliseconds
+$finalResults = array();
 if ($q) {
 
     $time_start = microtime(true);
@@ -33,14 +34,31 @@ if ($q) {
     $time_end = microtime(true);
     $exec_time_ms = ($time_end - $time_start) * 1000;
 
-    $finalResults = array();
+    $filePrefix = "";
     foreach ($results as $rawResult) {
-        $result = substr($rawResult, 26);
-        $parts = explode(':', $result);
+        $parts = explode(':', $rawResult);
         $filePath = array_shift($parts);
         $lineNum = intval(array_shift($parts));
         $line = implode(':', $parts);
-        $finalResults[$filePath][$lineNum] = $line;
+        $filePrefix = substr($filePath, 0, 26);
+        $finalResults[substr($filePath, 26)][$lineNum] = $line;
+    }
+    if ($contextLength) {
+        $resultsWithContext = array();
+        foreach ($finalResults as $filePath => $results) {
+            $allLines = array();
+            foreach ($results as $index => $line) {
+                for ($i = max(0, $index - $contextLength); $i <= $index + $contextLength; $i++) {
+                    $allLines[$i] = 1;
+                }
+            }
+            $file = new SplFileObject($filePrefix.$filePath);
+            foreach ($allLines as $index => $_) {
+                $file->seek($index - 1);
+                $resultsWithContext[$filePath][$index] = $file->getCurrentLine();
+            }
+        }
+        $finalResults = $resultsWithContext;
     }
 }
 
