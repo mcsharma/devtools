@@ -8,6 +8,7 @@ $contextLength = intval($_GET['context'] ?: '0');
 $results = array();
 $exec_time_ms = 0; // in milliseconds
 $finalResults = array();
+$count = 0;
 if ($q) {
 
     $time_start = microtime(true);
