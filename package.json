@@ -1,0 +1,27 @@
+{
+  "name": "devtools",
+  "version": "1.0.0",
+  "description": "This module contains set of in-house built dev tools for ThoughtSpot.",
+  "main": "app.js",
+  "devDependencies": {
+    "browserify": "latest",
+    "watchify": "latest"
+  },
+  "scripts": {
+    "dev": "browserify -t [ babelify --presets [ react ] ] public/codesearch/main.js -o public/codesearch/bundle.js",
+    "watch": "watchify -t [ babelify --presets [ react ] ] public/codesearch/main.js -o public/codesearch/bundle.js -d -v",
+    "prod": "npm run dev && uglifyjs public/codesearch/bundle.js -o public/codesearch/bundle.min.js -c -m"
+  },
+  "author": "mahesh@thoughtspot.com",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-react": "^6.5.0",
+    "babelify": "^7.2.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "urijs": "latest",
+    "jquery": "latest"
+  }
+}

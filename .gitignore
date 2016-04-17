@@ -1,6 +1,6 @@
-js/bundle.js
-js/node_modules
-js/npm-debug.log
-sample_results.txt
+node_modules/
+npm-debug.log
+.idea/
+*.min.js
+bundle.js
 video/codesearch.mov
-.idea
