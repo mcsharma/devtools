@@ -69,7 +69,7 @@ var Utils = {
     },
     
     toRegexSafe: function (str) {
-        var charsToEscape = ".^$*+-?()[]{}\|";
+        var charsToEscape = ".^$*+-?()[]{}\\|";
         var regexSafeStr = "";
         for (var i = 0; i < str.length; i++) {
             var c = str[i];
