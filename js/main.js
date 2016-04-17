@@ -1,3 +1,5 @@
+window.location = "http://tools.thoughtspot.co/codesearch";
+/*
 var React = require('react');
 var ReactDOM = require('react-dom');
 
@@ -8,3 +10,4 @@ window.onload = function () {
         document.getElementById("container")
     );
 };
+*/
