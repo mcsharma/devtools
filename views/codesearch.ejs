@@ -3,7 +3,6 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="<%=bundledJSFile%>"></script>
     <script>
-        var setting = "<%=settings.env%>";
         // Escape all forward slashes, otherwise if the text contains a closing
         // script tag, it will screw things up.
         var responseData = <%- JSON.stringify(data).replace(/\//g, '\\/') %>;
