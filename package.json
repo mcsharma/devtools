@@ -8,20 +8,24 @@
     "watchify": "latest"
   },
   "scripts": {
-    "dev": "browserify -t [ babelify --presets [ react ] ] public/codesearch/main.js -o public/codesearch/bundle.js",
-    "watch": "watchify -t [ babelify --presets [ react ] ] public/codesearch/main.js -o public/codesearch/bundle.js -d -v",
-    "prod": "npm run dev && uglifyjs public/codesearch/bundle.js -o public/codesearch/bundle.min.js -c -m"
+    "dev": "browserify -t [ babelify --presets [ react ] ] public/id/main.js -o public/id/bundle.js",
+    "watch": "watchify -t [ babelify --presets [ react ] ] public/id/main.js -o public/id/bundle.js -d -v",
+    "prod": "npm run dev && uglifyjs public/id/bundle.js -o public/id/bundle.min.js -c -m"
   },
   "author": "mahesh@thoughtspot.com",
   "license": "ISC",
   "dependencies": {
     "babel-preset-react": "^6.5.0",
     "babelify": "^7.2.0",
+    "bootstrap": "^3.3.6",
+    "cookie-parser": "^1.4.1",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "jquery": "latest",
+    "pg": "^4.5.3",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
-    "urijs": "latest",
-    "jquery": "latest"
+    "underscore": "^1.8.3",
+    "urijs": "latest"
   }
 }
