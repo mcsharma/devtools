@@ -4,6 +4,9 @@ var $ = require('jquery');
 var moment = require('moment');
 var metadataHeaderFields = require('../../common/MetadataHeaderFields');
 var Utils = require('../../common/Utils');
+var ShyContent = require('./ShyContent');
+
+var HOVER_FETCH_DELAY_MS = 500;
 
 var IdRootUI = React.createClass({
 
@@ -52,7 +55,7 @@ var IdRootUI = React.createClass({
                     self.setState({hover: hover});
                 }
             });
-        }, 250);
+        }, HOVER_FETCH_DELAY_MS);
     },
 
     cancelHoverCardFetchRequest: function () {
@@ -203,15 +206,15 @@ var IdRootUI = React.createClass({
                 <div className="dataTable">
                     {dataTable}
                 </div>
-                {this.state.hover.vis ? <div
-                    className="hovercard"
-                    ref="hovercard"
-                    style={{
-                left: this.state.hover.x,
-                top: this.state.hover.y}}>
-                    <h4>Type: {this.state.hover.metadataType}</h4>
-                    {this.getMarkupRecursive("", this.state.hover.data)}
-                </div> : null}
+                {this.state.hover.vis
+                    ? <div
+                        className="hovercard"
+                        ref="hovercard"
+                        style={{left: this.state.hover.x, top: this.state.hover.y}}>
+                        <h4>Type: {this.state.hover.metadataType}</h4>
+                        {this.getMarkupRecursive("", this.state.hover.data)}
+                      </div>
+                    : null}
             </div>
         );
     },
@@ -220,7 +223,6 @@ var IdRootUI = React.createClass({
         if (data === null) {
             return "";
         }
-//        if (field === "sageContext") return "";
         if (typeof data === 'string') {
             if (field === 'created' || field === 'modified') {
                 return data + " (" + moment.unix(Number(data) / 1000).format() + ")";
@@ -232,6 +234,8 @@ var IdRootUI = React.createClass({
                     href={"/id/"+data}>
                     {data}
                 </a>;
+            } else if (data.length > 200) {
+                return <ShyContent>{data}</ShyContent>;
             } else {
                 return data;
             }
@@ -254,7 +258,14 @@ var IdRootUI = React.createClass({
             if (metadataHeaderFields.indexOf(key) !== -1) {
                 continue;
             }
-            rows.push([key, this.getMarkupRecursive(key, data[key])]);
+            rows.push([
+                key,
+                Array.isArray(data) ?
+                    <ShyContent>
+                        {this.getMarkupRecursive(key, data[key])}
+                    </ShyContent>
+                    : this.getMarkupRecursive(key, data[key])
+            ]);
         }
 
         return (
@@ -263,8 +274,8 @@ var IdRootUI = React.createClass({
                 {rows.map(function (row) {
                     return (
                         <tr key={row[0]}>
-                            <td className="col-md-1">{row[0]}</td>
-                            <td className="col-md-11">{row[1]}</td>
+                            <td className="rowKey">{row[0]}</td>
+                            <td className="rowValue">{row[1]}</td>
                         </tr>
                     );
                 })}

@@ -9,11 +9,20 @@ label {
 }
 
 table {
-    font-size: 14px;
+    font-size: 13px;
 }
 
-.dataTable table {
-    max-width: 1500px;
+td {
+    max-width: 500px;
+    word-wrap: break-word;
+}
+
+td.rowKey {
+    width: 5%;
+}
+
+td.rowValue {
+    width: 95%;
 }
 
 a, u {
