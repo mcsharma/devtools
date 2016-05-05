@@ -22,6 +22,7 @@
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "jquery": "latest",
+    "moment": "^2.13.0",
     "pg": "^4.5.3",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",

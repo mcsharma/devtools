@@ -8,8 +8,12 @@ label {
   font-weight: normal !important;
 }
 
-table.dataTable {
-  font-size: 14px;
+table {
+    font-size: 14px;
+}
+
+.dataTable table {
+    max-width: 1500px;
 }
 
 a, u {
@@ -92,6 +96,9 @@ div.help {
   z-index: 0;
   background-color: rgb(232,255,232);
   padding: 10px;
-  max-width: 400px;
   box-shadow: 0px 0px 15px #888888;
+}
+
+.hovercard table {
+  max-width: 400px;
 }
