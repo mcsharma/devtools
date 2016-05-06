@@ -6,7 +6,7 @@ var metadataHeaderFields = require('../../common/MetadataHeaderFields');
 var Utils = require('../../common/Utils');
 var ShyContent = require('./ShyContent');
 
-var HOVER_FETCH_DELAY_MS = 500;
+var HOVER_FETCH_DELAY_MS = 400;
 
 var IdRootUI = React.createClass({
 
@@ -17,7 +17,7 @@ var IdRootUI = React.createClass({
     },
 
     componentDidMount: function () {
-        if (!this.props.id && this.refs.idInput) {
+        if (!this.props.input && this.refs.idInput) {
             this.refs.idInput.focus();
         } else if (this.refs.host && !this.refs.host.value) {
             this.refs.host.focus();
@@ -42,13 +42,20 @@ var IdRootUI = React.createClass({
         this.timeout = setTimeout(function () {
             $.ajax({
                 url: URI(event.target.href).addQuery('ajax', 1),
-                success: function (response) {
-                    for (var key in response.data) {
+                success: function (results) {
+                    if (results.length !== 1) {
+                        console.error(
+                            "No row was found for " + URI(event.target.href).path().split('/')[2]
+                        );
+                        return;
+                    }
+                    var result = results[0];
+                    for (var key in result.row) {
                         if (metadataHeaderFields.indexOf(key) === -1) {
-                            delete response.data[key];
+                            delete result.row[key];
                         }
                     }
-                    var hover = response;
+                    var hover = result;
                     hover.x = event.pageX;
                     hover.y = event.pageY;
                     hover.vis = true;
@@ -170,30 +177,56 @@ var IdRootUI = React.createClass({
                 ref="idInput"
                 className="form-control idInput"
                 placeholder="paste a GUID and hit enter" type="text"
-                defaultValue={this.props.id} onKeyDown={this.onInput}>
+                defaultValue={this.props.input} onKeyDown={this.onInput}>
             </input>;
 
-        if (!this.props.id) {
+        if (!this.props.input || this.props.results.length !== 1) {
+            var response;
+            if (!this.props.input) {
+                response = null;
+            } else if (this.props.results.length === 0) {
+                response = <div className="noDataMessage alert alert-danger">
+                    No row was found for this input!
+                </div>;
+            } else {
+                response = <div>
+                    <div className="alert alert-info">
+                        Multiple Results found, choose one!
+                    </div>
+                    <table className="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Metadata Type</th>
+                                <th>Name</th>
+                                <th>ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {this.props.results.map(function (result) {
+                            return (
+                                <tr key={result.row.id}>
+                                    <td>{result.type}</td>
+                                    <td>{result.row.name}</td>
+                                    <td><a href={"/id/"+result.row.id}>
+                                        {result.row.id}
+                                    </a></td>
+                                </tr>
+                            );
+                        })}
+                        </tbody>
+                    </table>
+                </div>;
+            }
+
             return (
                 <div>
                     {topRightDBConfig}
-                    <div style={{marginTop:"75px", textAlign: "center"}}>
+                    <div style={{marginTop: '40px', marginLeft: '30px'}}>
                         {idInput}
+                        <div className="unusualResponse">{response}</div>
                     </div>
                 </div>
             );
-        }
-
-        var typeInfo = null, dataTable = null;
-        if (this.props.data) {
-            typeInfo = <span className="typeInfo">
-          Type: {this.props.metadataType}
-        </span>;
-            dataTable = this.getMarkupRecursive("", this.props.data);
-        } else {
-            dataTable = <div className="noDataMessage alert alert-danger">
-                No row was found for this ID.
-            </div>;
         }
 
         return (
@@ -201,19 +234,21 @@ var IdRootUI = React.createClass({
                 {topRightDBConfig}
                 <div className="header">
                     {idInput}
-                    {typeInfo}
+                    <span className="typeInfo">
+                        Type: {this.props.results[0].type}
+                    </span>
                 </div>
                 <div className="dataTable">
-                    {dataTable}
+                    {this.getMarkupRecursive("", this.props.results[0].row)}
                 </div>
                 {this.state.hover.vis
                     ? <div
-                        className="hovercard"
-                        ref="hovercard"
-                        style={{left: this.state.hover.x, top: this.state.hover.y}}>
-                        <h4>Type: {this.state.hover.metadataType}</h4>
-                        {this.getMarkupRecursive("", this.state.hover.data)}
-                      </div>
+                    className="hovercard"
+                    ref="hovercard"
+                    style={{left: this.state.hover.x, top: this.state.hover.y}}>
+                    <h4>Type: {this.state.hover.type}</h4>
+                    {this.getMarkupRecursive("", this.state.hover.row)}
+                </div>
                     : null}
             </div>
         );

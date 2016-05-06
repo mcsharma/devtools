@@ -10,7 +10,7 @@ app.use(cookieParser())
 
 app.use('/', require('./controllers/index'));
 app.use('/codesearch', require('./controllers/codesearch'));
-app.get('/id/:id?', require('./controllers/id'));
+app.get('/id/:input?', require('./controllers/id'));
 
 app.listen(3000, function () {
   console.log('Listening on port 3000!');
