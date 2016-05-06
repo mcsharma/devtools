@@ -176,7 +176,7 @@ var IdRootUI = React.createClass({
             <input
                 ref="idInput"
                 className="form-control idInput"
-                placeholder="paste a GUID and hit enter" type="text"
+                placeholder="Enter name or GUID of an object" type="text"
                 defaultValue={this.props.input} onKeyDown={this.onInput}>
             </input>;
 
