@@ -102,11 +102,18 @@ var IdRootUI = React.createClass({
         window.location.href = uri;
     },
 
+    onSearchClick: function(event) {
+        var input = this.refs.idInput.value.trim();
+        var uri = URI(window.location.href);
+        uri.segment(1, input);
+        window.location.href = uri;
+    },
+
     render: function () {
         var host = this.getCookie('host'), port = this.getCookie('port');
         if (!host || !port) {
             return (
-                <div className="hostAndPort">
+                <div className="primaryDbConfig">
                     <div className="help">
                         Set the host and port of postgres server of your cluster. You can
                         find this information by running<br/>
@@ -150,7 +157,7 @@ var IdRootUI = React.createClass({
 
         var topRightDBConfig =
             <div>
-                <div className="dbconfig form-inline">
+                <div className="topRightDbconfig form-inline">
                     <div className="form-group">
                         <label for="host" className="control-label">Host IP:</label>
                         <input className="input-sm form-control"
@@ -173,33 +180,51 @@ var IdRootUI = React.createClass({
             </div>;
 
         var idInput =
-            <input
-                ref="idInput"
-                className="form-control idInput"
-                placeholder="Enter name or GUID of an object" type="text"
-                defaultValue={this.props.input} onKeyDown={this.onInput}>
-            </input>;
+            <div className="input">
+                <div className="input-group">
+                    <input
+                        ref="idInput" id="idInput"
+                        className="form-control"
+                        placeholder="Enter name or GUID of an object" type="text"
+                        defaultValue={this.props.input} onKeyDown={this.onInput}>
+                    </input>
+                    <span className="input-group-btn">
+                        <button className="btn btn-primary" type="button"
+                                aria-label="Search" onClick={this.onSearchClick}>
+                            <span className="glyphicon glyphicon-search" aria-hidden="true" />
+                        </button>
+                    </span>
+                </div>
+            </div>;
 
-        if (!this.props.input || this.props.results.length !== 1) {
-            var response;
-            if (!this.props.input) {
-                response = null;
-            } else if (this.props.results.length === 0) {
-                response = <div className="noDataMessage alert alert-danger">
-                    No row was found for this input!
-                </div>;
+        var response = null, typeInfo = null;
+        if (this.props.input) {
+            if (this.props.results.length === 0) {
+                response =
+                    <div className="noResultResponse alert alert-danger">
+                        No row was found for this input!
+                    </div>;
+            } else if (this.props.results.length == 1) {
+                typeInfo =
+                    <span className="typeInfo">
+                        {this.props.results[0].type}
+                    </span>;
+                response =
+                    <div className="dataTable">
+                        {this.getMarkupRecursive("", this.props.results[0].row)}
+                    </div>;
             } else {
-                response = <div>
+                response = <div className="multiResultResponse">
                     <div className="alert alert-info">
                         Multiple Results found, choose one!
                     </div>
                     <table className="table table-condensed">
                         <thead>
-                            <tr>
-                                <th>Metadata Type</th>
-                                <th>Name</th>
-                                <th>ID</th>
-                            </tr>
+                        <tr>
+                            <th>Metadata Type</th>
+                            <th>Name</th>
+                            <th>ID</th>
+                        </tr>
                         </thead>
                         <tbody>
                         {this.props.results.map(function (result) {
@@ -217,29 +242,15 @@ var IdRootUI = React.createClass({
                     </table>
                 </div>;
             }
-
-            return (
-                <div>
-                    {topRightDBConfig}
-                    <div style={{marginTop: '40px', marginLeft: '30px'}}>
-                        {idInput}
-                        <div className="unusualResponse">{response}</div>
-                    </div>
-                </div>
-            );
         }
 
         return (
             <div>
                 {topRightDBConfig}
-                <div className="header">
-                    {idInput}
-                    <span className="typeInfo">
-                        Type: {this.props.results[0].type}
-                    </span>
-                </div>
-                <div className="dataTable">
-                    {this.getMarkupRecursive("", this.props.results[0].row)}
+                {idInput}
+                {typeInfo}
+                <div className="response">
+                    {response}
                 </div>
                 {this.state.hover.vis
                     ? <div
@@ -254,7 +265,11 @@ var IdRootUI = React.createClass({
         );
     },
 
-    getMarkupRecursive: function (field, data) {
+    getMarkupRecursive: function (field, data, depth) {
+        if (depth === undefined) {
+            depth = 0;
+
+        }
         if (data === null) {
             return "";
         }
@@ -285,7 +300,7 @@ var IdRootUI = React.createClass({
         for (var i = 0; i < metadataHeaderFields.length; i++) {
             var header = metadataHeaderFields[i];
             if (data.hasOwnProperty(header)) {
-                rows.push([header, this.getMarkupRecursive(header, data[header])]);
+                rows.push([header, this.getMarkupRecursive(header, data[header], depth + 1)]);
             }
         }
         // Now display other fields.
@@ -297,9 +312,9 @@ var IdRootUI = React.createClass({
                 key,
                 Array.isArray(data) ?
                     <ShyContent>
-                        {this.getMarkupRecursive(key, data[key])}
+                        {this.getMarkupRecursive(key, data[key], depth + 1)}
                     </ShyContent>
-                    : this.getMarkupRecursive(key, data[key])
+                    : this.getMarkupRecursive(key, data[key], depth + 1)
             ]);
         }
 
@@ -309,7 +324,7 @@ var IdRootUI = React.createClass({
                 {rows.map(function (row) {
                     return (
                         <tr key={row[0]}>
-                            <td className="rowKey">{row[0]}</td>
+                            <td className={"rowKey depth" + depth}>{row[0]}</td>
                             <td className="rowValue">{row[1]}</td>
                         </tr>
                     );

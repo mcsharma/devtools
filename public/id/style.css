@@ -17,6 +17,11 @@ td {
     word-wrap: break-word;
 }
 
+.response .alert {
+    padding: 10px;
+    border-radius: 2px;
+}
+
 td.rowKey {
     width: 5%;
 }
@@ -25,57 +30,11 @@ td.rowValue {
     width: 95%;
 }
 
-a, u {
-    text-decoration: none;
+td.rowKey.depth0  {
+    min-width: 140px;
 }
-
-input.idInput {
-    width: 300px;
-    display: inline;
-}
-
-.header input {
-    margin-left: 30px;
-}
-
-.unusualResponse {
-    margin-top: 30px;
-}
-
-.unusualResponse .alert {
-    width: 300px;
-    height: 50px;
-}
-
-.unusualResponse table {
-    width: auto;
-}
-
-.unusualResponse table th {
-    text-align: center;
-}
-
-.dbconfig input:not(:hover) {
-    border-color: transparent;
-}
-
-td.topTableKey {
-    min-width: 160px;
-}
-
-.dbconfig {
-    float: right;
-}
-
-.dataTable {
-    margin-top: 20px;
-}
-
-.header {
-    margin-top: 40px;
-}
-
-div.hostAndPort {
+/* The main DB config dialog that shows for the first time */
+.primaryDbConfig {
     width: 435px;
     height: 250px;
     box-shadow: 0px 0px 15px #888888;
@@ -89,29 +48,61 @@ div.hostAndPort {
     padding: 12px;
 }
 
-div.help {
+.primaryDbConfig .help {
     margin-bottom: 10px;
 }
 
-.borderless th, .borderless td {
-    border-top: none !important;
-    border-left: none !important;
-}
-
-.hostAndPort .btn-primary {
+.primaryDbConfig .btn-primary {
     width: 100%;
     font-size: 16px;
 }
 
-.fixed-table-container {
-    border: 0px;
+/* Host and port form that always shown on top right corner */
+.topRightDbconfig {
+    float: right;
+}
+
+.topRightDbconfig input:not(:hover) {
+    border-color: transparent;
+}
+
+/* The main ID search bar */
+.input {
+    margin-top: 30px;
+}
+
+.input button {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #4285f4;
+    border-color: #4285f4;
+}
+
+.input button:hover {
+    background-color: #4873f5;
+    border-color: #4873f5;
+}
+
+.input, .noResultResponse, .multiResultResponse {
+    width: 400px;
+    margin-left: 30px;
+    display: inline-block;
+}
+
+.multiResultResponse table {
+    width: 450px;
 }
 
 .typeInfo {
     text-align: center;
     font-size: 18px;
     font-weight: 500;
-    margin-left: 300px;
+    margin-left: 200px;
+    vertical-align: super;
+}
+
+.response {
+    margin-top: 25px;
 }
 
 .hovercard {
@@ -124,4 +115,13 @@ div.help {
 
 .hovercard table {
     max-width: 400px;
+}
+
+.borderless th, .borderless td {
+    border-top: none !important;
+    border-left: none !important;
+}
+
+.fixed-table-container {
+    border: 0px;
 }
