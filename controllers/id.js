@@ -22,33 +22,17 @@ module.exports = function (req, res) {
             // TODO: Send error info on client.
             return respond();
         }
-        findContainingTables(input, function (err, tableNames) {
-            if (err) {
-                console.error("Error finding right table for " + input, err);
-                return respond();
-            }
-            fetchRows(input, tableNames, function (err, data) {
+        if (tablesConfig.hasOwnProperty(input)) {
+            fetchRows(null, [input], onRowsFetched);
+        } else {
+            findContainingTables(input, function (err, tableNames) {
                 if (err) {
-                    console.error(
-                        util.format(
-                            "Error fetching rows for ID: %s in tables: %s",
-                            input,
-                            tableNames.join(', ')
-                        ),
-                        err
-                    );
+                    console.error("Error finding right table for " + input, err);
                     return respond();
                 }
-                var results = [];
-                for (var tableName in data) {
-                    for (var index in data[tableName]) {
-                        var metadataType = findMetadataType(tableName, data[tableName][index]);
-                        results.push({type: metadataType, row: data[tableName][index]});
-                    }
-                }
-                respond(results);
+                fetchRows(input, tableNames, onRowsFetched);
             });
-        });
+        }
     });
 
     function findContainingTables(input, callback) {
@@ -101,16 +85,35 @@ module.exports = function (req, res) {
     }
 
     function fetchRowsFromTable(input, tableName, callback) {
-        var op = Utils.isGuid(input) ? 'id =' : 'name ilike';
-        client.query(
-            util.format("SELECT * FROM %s WHERE %s '%s'", tableName, op, input),
-            function (err, result) {
-                if (err) {
-                    return callback(err);
-                }
-                callback(null, tableName, result.rows);
+        var where = "";
+        if (input) {
+            var op = Utils.isGuid(input) ? 'id =' : 'name ilike';
+            where = util.format("WHERE %s '%s'", op, input);
+        }
+
+        var q = util.format("SELECT * FROM %s %s", tableName, where);
+        console.log(q);
+        client.query(q, function (err, result) {
+            if (err) {
+                return callback(err);
             }
-        );
+            callback(null, tableName, result.rows);
+        });
+    }
+
+    function onRowsFetched(err, data) {
+        if (err) {
+            console.error('Error fetching rows', err);
+            return respond();
+        }
+        var results = [];
+        for (var tableName in data) {
+            for (var index in data[tableName]) {
+                var metadataType = findMetadataType(tableName, data[tableName][index]);
+                results.push({type: metadataType, row: data[tableName][index]});
+            }
+        }
+        respond(results);
     }
 
     function findMetadataType(tableName, row) {

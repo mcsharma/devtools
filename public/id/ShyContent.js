@@ -6,7 +6,7 @@ var ShyContent = React.createClass({
         return {};
     },
 
-    onToggle: function(evt) {
+    onClick: function(evt) {
         evt.preventDefault();
         this.setState({visible: !this.state.visible});
     },
@@ -14,7 +14,7 @@ var ShyContent = React.createClass({
     render: function() {
         return (
             <div>
-                <a href="#" onClick={this.onToggle}>
+                <a href="#" onClick={this.onClick}>
                     {this.state.visible ? '{click to hide}' : '{click to show}'}
                 </a>
                 {this.state.visible ? <div>{this.props.children}</div> : null}
