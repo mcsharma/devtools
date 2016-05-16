@@ -8,7 +8,8 @@ window.onload = function () {
     var input = uri.path().split('/')[2];
     ReactDOM.render(
         <IdRootUI
-            results={window.results}
+            error={window.response.error}
+            results={window.response.results}
             input={input}
         />,
         document.getElementById("root")

@@ -8,8 +8,11 @@ var _ = require('underscore');
 module.exports = function (req, res) {
     var input = req.params.input;
 
-    if (!req.cookies.host || !req.cookies.port || !input) {
-        return respond();
+    if (!input) {
+        return respond(null, []);
+    }
+    if (!req.cookies.host || !req.cookies.port) {
+        return respond("No host and port info found in cookie");
     }
 
     var conString = "postgres://postgres:@" + req.cookies.host + ":"
@@ -18,17 +21,18 @@ module.exports = function (req, res) {
 
     client.connect(function (err) {
         if (err) {
-            console.error("Error connecting to postgres: ", err);
-            // TODO: Send error info on client.
-            return respond();
+            var error = "Error connecting to DB. Please double check host and port setup";
+            console.error(error, err);
+            return respond(error);
         }
         if (tablesConfig.hasOwnProperty(input)) {
             fetchRows(null, [input], onRowsFetched);
         } else {
             findContainingTables(input, function (err, tableNames) {
                 if (err) {
-                    console.error("Error finding right table for " + input, err);
-                    return respond();
+                    var error = "Error finding right table for '" + input + "'";
+                    console.error(error, err);
+                    return respond(error);
                 }
                 fetchRows(input, tableNames, onRowsFetched);
             });
@@ -107,8 +111,9 @@ module.exports = function (req, res) {
 
     function onRowsFetched(err, data) {
         if (err) {
-            console.error('Error fetching rows', err);
-            return respond();
+            var error = 'Error fetching data';
+            console.error(error, err);
+            return respond(error);
         }
         var results = [];
         for (var tableName in data) {
@@ -117,7 +122,7 @@ module.exports = function (req, res) {
                 results.push({type: metadataType, row: data[tableName][index]});
             }
         }
-        respond(results);
+        respond(null, results);
     }
 
     function findMetadataType(tableName, row) {
@@ -129,17 +134,18 @@ module.exports = function (req, res) {
         }
     }
 
-    function respond(results) {
+    function respond(err, results) {
         results = results || [];
+        var response = {error: err, results: results};
         if (req.query.ajax) {
-            res.send(results);
+            res.send(response);
         } else {
             var bundlejs = process.env.NODE_ENV === 'production'
                 ? 'bundle.min.js'
                 : 'bundle.js';
             res.render('obj', {
                 bundledJSFile: bundlejs,
-                results: results
+                response: response
             });
         }
     }

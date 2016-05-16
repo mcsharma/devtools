@@ -112,13 +112,17 @@ td.rowValue {
     border-color: #4873f5;
 }
 
-.input, .noResultResponse, .multiResultResponse {
+.input, .unusualResponse {
     margin-left: 30px;
     display: inline-block;
 }
 
-.input, .noResultResponse, .multiResultResponse .alert {
+.input, .unusualResponse .alert-info {
     width: 400px;
+}
+
+.unusualResponse .alert-danger {
+    min-width: 400px;
 }
 
 .typeInfo {

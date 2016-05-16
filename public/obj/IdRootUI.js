@@ -33,6 +33,7 @@ var IdRootUI = React.createClass({
                 />
                 <ObjectExplorer
                     input={this.props.input}
+                    error={this.props.error}
                     results={this.props.results}
                 />
             </div>

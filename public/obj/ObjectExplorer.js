@@ -47,10 +47,19 @@ var ObjectExplorer = React.createClass({
 
         var response = null, typeInfo = null;
         if (this.props.input) {
-            if (this.props.results.length === 0) {
+            if (this.props.error) {
                 response =
-                    <div className="noResultResponse alert alert-danger">
-                        No row was found for this input!
+                    <div className="unusualResponse">
+                        <div className="alert alert-danger">
+                            {this.props.error}
+                        </div>
+                    </div>;
+            } else if (this.props.results.length === 0) {
+                response =
+                    <div className="unusualResponse">
+                        <div className="alert alert-danger">
+                            No row was found for this input!
+                        </div>
                     </div>;
             } else if (this.props.results.length == 1) {
                 typeInfo =
@@ -60,7 +69,7 @@ var ObjectExplorer = React.createClass({
                 response =
                     <Comps.JsonView className="mainTable" data={this.props.results[0].row} />;
             } else {
-                response = <div className="multiResultResponse">
+                response = <div className="unusualResponse">
                     <div className="alert alert-info">
                         <strong>{this.props.results.length}</strong> results found, pick one!
                     </div>
