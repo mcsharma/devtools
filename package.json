@@ -8,9 +8,9 @@
     "watchify": "latest"
   },
   "scripts": {
-    "dev": "browserify -t [ babelify --presets [ react ] ] public/id/main.js -o public/id/bundle.js",
-    "watch": "watchify -t [ babelify --presets [ react ] ] public/id/main.js -o public/id/bundle.js -d -v",
-    "prod": "npm run dev && uglifyjs public/id/bundle.js -o public/id/bundle.min.js -c -m"
+    "dev": "browserify -t [ babelify --presets [ react ] ] public/obj/main.js -o public/obj/bundle.js",
+    "watch": "watchify -t [ babelify --presets [ react ] ] public/obj/main.js -o public/obj/bundle.js -d -v",
+    "prod": "npm run dev && uglifyjs public/obj/bundle.js -o public/obj/bundle.min.js -c -m"
   },
   "author": "mahesh@thoughtspot.com",
   "license": "ISC",

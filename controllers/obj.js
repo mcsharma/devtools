@@ -56,7 +56,7 @@ module.exports = function (req, res) {
                 return callback(err);
             }
             if (result.rows.length === 0) {
-                return callback("No table has this id");
+                return callback(null, []);
             }
             callback(null, _.uniq(result.rows.map(function(row) {
                 return row.table_name
@@ -68,6 +68,10 @@ module.exports = function (req, res) {
         var data = {};
         var c = 0;
         var error = null;
+        if (tableNames.length === 0) {
+            callback(error, data);
+            return;
+        }
         for (var index in tableNames) {
             fetchRowsFromTable(input, tableNames[index], function(err, tableName, rows) {
                 c++;
@@ -133,7 +137,7 @@ module.exports = function (req, res) {
             var bundlejs = process.env.NODE_ENV === 'production'
                 ? 'bundle.min.js'
                 : 'bundle.js';
-            res.render('id', {
+            res.render('obj', {
                 bundledJSFile: bundlejs,
                 results: results
             });

@@ -4,3 +4,4 @@ npm-debug.log
 *.min.js
 bundle.js
 video/codesearch.mov
+*.DS_Store

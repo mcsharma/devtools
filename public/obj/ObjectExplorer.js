@@ -1,6 +1,6 @@
 var React = require('react');
 var URI = require('urijs');
-var JsonView = require('./JsonView');
+var Comps = require('./Comps');
 
 var ObjectExplorer = React.createClass({
 
@@ -58,11 +58,11 @@ var ObjectExplorer = React.createClass({
                         {this.props.results[0].type}
                     </span>;
                 response =
-                    <JsonView className="mainTable" data={this.props.results[0].row} />;
+                    <Comps.JsonView className="mainTable" data={this.props.results[0].row} />;
             } else {
                 response = <div className="multiResultResponse">
                     <div className="alert alert-info">
-                        Multiple Results found, choose one!
+                        <strong>{this.props.results.length}</strong> results found, pick one!
                     </div>
                     <table className="table table-condensed">
                         <thead>
@@ -78,9 +78,7 @@ var ObjectExplorer = React.createClass({
                                 <tr key={result.row.id}>
                                     <td>{result.type}</td>
                                     <td>{result.row.name}</td>
-                                    <td><a href={"/id/"+result.row.id}>
-                                        {result.row.id}
-                                    </a></td>
+                                    <td><Comps.Guid guid={result.row.id} /></td>
                                 </tr>
                             );
                         })}

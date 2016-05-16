@@ -9,8 +9,9 @@ var Utils = require('../../common/Utils');
 var ShyContent = require('./ShyContent');
 var RenderInBody = require('./RenderInBody');
 
-var JsonView = React.createClass({
+var HOVER_FETCH_DELAY_MS = 500;
 
+var JsonView = React.createClass({
     render: function () {
         return this.getMarkupRecursive(this.props.data);
     },
@@ -90,10 +91,7 @@ var JsonView = React.createClass({
     }
 });
 
-var HOVER_FETCH_DELAY_MS = 500;
-
 var Guid = React.createClass({
-
     getInitialState: function () {
         return {};
     },
@@ -111,7 +109,7 @@ var Guid = React.createClass({
                 }.bind(this));
             } else {
                 root = $(ReactDOM.findDOMNode(this)).closest('#root');
-                $(root).on('mousedown', function(e) {
+                $(root).on('mousedown', function (e) {
                     if (this.isMounted()) {
                         this.setState({vis: false});
                     }
@@ -127,7 +125,7 @@ var Guid = React.createClass({
         }
     },
 
-    componentWillUnmount: function() {
+    componentWillUnmount: function () {
         $(window).off('mousedown.guid');
     },
 
@@ -135,6 +133,7 @@ var Guid = React.createClass({
         event.persist();
         var self = this;
         this.timeout = setTimeout(function () {
+            self.timeout = null;
             $.ajax({
                 url: URI(event.target.href).addQuery('ajax', 1),
                 success: function (results) {
@@ -172,7 +171,8 @@ var Guid = React.createClass({
             <div>
                 <a onMouseOver={this.fetchHoverCard}
                    onMouseOut={this.cancelHoverCardFetchRequest}
-                   href={"/id/"+this.props.guid}>
+                   onClick={this.cancelHoverCardFetchRequest}
+                   href={"/obj/"+this.props.guid}>
                     {this.props.guid}
                 </a>
                 {this.state.vis ?
@@ -192,17 +192,21 @@ var Guid = React.createClass({
 });
 
 var HoverCard = React.createClass({
-
     render: function () {
         return (
             <div
                 className="hovercard"
                 style={{left: this.props.left, top: this.props.top}}>
                 <h4>Type: {this.props.type}</h4>
-                <JsonView className="hoverTable" data={this.props.data} />
+                <JsonView className="hoverTable" data={this.props.data}/>
             </div>
         );
     }
 });
 
-module.exports = JsonView;
+module.exports = {
+    JsonView: JsonView,
+    Guid: Guid,
+    HoverCard: HoverCard
+};
+
