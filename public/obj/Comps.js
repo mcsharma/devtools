@@ -136,14 +136,15 @@ var Guid = React.createClass({
             self.timeout = null;
             $.ajax({
                 url: URI(event.target.href).addQuery('ajax', 1),
-                success: function (results) {
-                    if (results.length !== 1) {
+                success: function (response) {
+                    if (response.error || response.results.length !== 1) {
                         console.warn(
-                            "No row was found for " + URI(event.target.href).path().split('/')[2]
+                            "No row single was found for " +
+                                URI(event.target.href).path().split('/')[2]
                         );
                         return;
                     }
-                    var result = results[0];
+                    var result = response.results[0];
                     for (var key in result.row) {
                         if (metadataHeaderFields.indexOf(key) === -1) {
                             delete result.row[key];

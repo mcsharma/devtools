@@ -21,7 +21,7 @@ module.exports = function (req, res) {
 
     client.connect(function (err) {
         if (err) {
-            var error = "Error connecting to DB. Please double check host and port setup";
+            var error = "Error connecting to DB. Please double check host and port setup.";
             console.error(error, err);
             return respond(error);
         }
