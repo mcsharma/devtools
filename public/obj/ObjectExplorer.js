@@ -98,9 +98,15 @@ var ObjectExplorer = React.createClass({
         }
 
         return (
-            <div>
-                {input}
-                {typeInfo}
+            <div className="objectExplorer">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>{input}</td>
+                            <td>{typeInfo}</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div className="response">
                     {response}
                 </div>

@@ -8,10 +8,13 @@
     "watchify": "latest"
   },
   "scripts": {
-    "dev": "browserify -t [ babelify --presets [ react ] ] public/obj/main.js -o public/obj/bundle.js",
-    "watch": "watchify -t [ babelify --presets [ react ] ] public/obj/main.js -o public/obj/bundle.js -d -v",
-    "prod": "npm run dev && uglifyjs public/obj/bundle.js -o public/obj/bundle.min.js -c -m"
-  },
+    "csDev": "browserify -t [ babelify --presets [ react ] ] public/codesearch/main.js -o public/codesearch/bundle.js",
+    "csWatch": "watchify -t [ babelify --presets [ react ] ] public/codesearch/main.js -o public/codesearch/bundle.js -d -v",
+    "csProd": "npm run csDev && uglifyjs public/obj/bundle.js -o public/codesearch/bundle.min.js -c -m",
+    "objDev": "browserify -t [ babelify --presets [ react ] ] public/obj/main.js -o public/obj/bundle.js",
+    "objWatch": "watchify -t [ babelify --presets [ react ] ] public/obj/main.js -o public/obj/bundle.js -d -v",
+    "objProd": "npm run objDev && uglifyjs public/obj/bundle.js -o public/obj/bundle.min.js -c -m"
+},
   "author": "mahesh@thoughtspot.com",
   "license": "ISC",
   "dependencies": {
