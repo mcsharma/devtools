@@ -14,5 +14,6 @@ module.exports = [
     'generation_num',
     'client_state',
     'schema_stripe',
-    'db_stripe'
+    'db_stripe',
+    'resolvedObjects'
 ];
