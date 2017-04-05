@@ -45,7 +45,7 @@ router.get('/', function (req, res) {
     exec(cmd, {maxBuffer: 3000*1024}, function (error, stdout, stderr) {
         var results = stdout.split("\n");
         results.pop(); // Last element will be "", so deleting that
-        var prefix = "/home/mahesh/_thoughtspot/";
+        var prefix = "/home/codemonkey/thoughtspot/";
         var count = results.length;
         var finalResults = {};
         var lineNum, filePath, i;
@@ -93,7 +93,7 @@ router.get('/', function (req, res) {
             bundledJSFile: process.env.NODE_ENV === 'production' 
                            ? 'bundle.min.js' : 'bundle.js',
             data: {
-                "prefix": "http://www.thoughtspot.co/diffusion/2/browse/master/",
+                "prefix": "http://phab.thoughtspot.co/diffusion/2/browse/master/",
                 "q": q,
                 "count": count,
                 "results": finalResults,

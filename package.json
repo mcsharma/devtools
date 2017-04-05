@@ -8,9 +8,11 @@
     "watchify": "latest"
   },
   "scripts": {
+    "postinstall": "npm run csProd && npm run objProd",
+    "start": "forever start app.js",
     "csDev": "browserify -t [ babelify --presets [ react ] ] public/codesearch/main.js -o public/codesearch/bundle.js",
     "csWatch": "watchify -t [ babelify --presets [ react ] ] public/codesearch/main.js -o public/codesearch/bundle.js -d -v",
-    "csProd": "npm run csDev && uglifyjs public/obj/bundle.js -o public/codesearch/bundle.min.js -c -m",
+    "csProd": "npm run csDev && uglifyjs public/codesearch/bundle.js -o public/codesearch/bundle.min.js -c -m",
     "objDev": "browserify -t [ babelify --presets [ react ] ] public/obj/main.js -o public/obj/bundle.js",
     "objWatch": "watchify -t [ babelify --presets [ react ] ] public/obj/main.js -o public/obj/bundle.js -d -v",
     "objProd": "npm run objDev && uglifyjs public/obj/bundle.js -o public/obj/bundle.min.js -c -m"
