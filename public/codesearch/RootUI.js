@@ -28,21 +28,22 @@ var RootUI = React.createClass({
     render: function () {
         var resultsSummaryUI = null;
         if (this.props.data.q) {
-            resultsSummaryUI = <span className="resultsCount">
-                <strong>{this.props.data.count}</strong> results
-                ({this.props.data.execTimeMs}ms)
-            </span>;
+            resultsSummaryUI =
+                <div className="perf-info">
+                    <strong>{this.props.data.count}</strong> results ({this.props.data.execTimeMs}ms)
+                </div>;
         }
         return (
-            <div>
-                <div className="topBar">
-                    <input
-                        className="query"
-                        defaultValue={this.props.data.q}
-                        placeholder="Type text and hit enter"
-                        onKeyDown={this._onQueryChange}
-                        ref="queryInput"/>
-                    {resultsSummaryUI}
+            <div className="root-ui">
+                <div className="top-bar">
+                    <div className="non-empty-input-section">
+                        {this.props.data.q ? <input
+                            className="non-empty-query"
+                            defaultValue={this.props.data.q}
+                            onKeyDown={this._onQueryChange}
+                            ref="queryInput"/> : null}
+                        {resultsSummaryUI}
+                    </div>
                     <span className="filters">
                         <FileTypeFilter fileType={this.props.data.fileType}/>
                         <CheckboxFilter
@@ -58,13 +59,41 @@ var RootUI = React.createClass({
                             checked={this.props.data.context}
                             label="Show context"/>
                     </span>
+                    <div className="author">
+                        Author: mahesh@thoughtspot.com
+                    </div>
                 </div>
-                <SearchResults
-                    results={this.props.data.results}
-                    q={this.props.data.q}
-                    cs={this.props.data.cs}
-                    ww={this.props.data.ww}
-                    prefix={this.props.data.prefix}/>
+                <div className="main-content">
+                    {this.props.data.q
+                        ? <SearchResults
+                            results={this.props.data.results}
+                            q={this.props.data.q}
+                            cs={this.props.data.cs}
+                            ww={this.props.data.ww}
+                            prefix={this.props.data.prefix}
+                        />
+                        :
+                        <div className="empty-input-content">
+                            <div className="logo-wrapper"><img className="ts-logo" src="logo.png"/></div>
+                            <div className="input">
+                                <div className="input-group">
+                                    <input
+                                        ref="queryInput"
+                                        className="form-control empty-query"
+                                        placeholder="Type text and hit enter" type="text"
+                                        defaultValue={this.props.data.q} onKeyDown={this._onQueryChange}>
+                                    </input>
+                                    <span className="input-group-btn">
+                                    <button className="btn btn-primary" type="button"
+                                            aria-label="Search">
+                                        <span className="glyphicon glyphicon-search" aria-hidden="true"/>
+                                    </button>
+                                 </span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
             </div>
         );
     }
