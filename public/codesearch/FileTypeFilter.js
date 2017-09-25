@@ -11,11 +11,14 @@ var FileTypeFilter = React.createClass({
                     value={this.props.fileType}
                     onChange={this._onChange}>
                     <option value="">all</option>
-                    <option value="java">java</option>
                     <option value="cpp">cpp</option>
-                    <option value="js">js</option>
                     <option value="py">py</option>
                     <option value="go">go</option>
+                    <option value="js/ts">js/ts both</option>
+                    <option value="ts">ts</option>
+                    <option value="js">js</option>
+                    <option value="java">java</option>
+                    <option value="txt">txt</option>
                 </select>
             </span>
         );

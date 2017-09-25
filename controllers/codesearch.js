@@ -34,9 +34,12 @@ router.get('/', function (req, res) {
     if (!cs) {
         options += " -i";
     }
-    if (fileType) {
+    if (fileType === "js/ts") {
+        options += " -f \\." + "[jt]s" + "$";
+    } else {
         options += " -f \\." + fileType + "$";
     }
+
     var escaped_q = addslashes(preg_quote(q));
     if (ww) {
         escaped_q = "\\b" + escaped_q + "\\b";
