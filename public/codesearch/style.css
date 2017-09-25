@@ -4,6 +4,10 @@ body {
     font-size: 13px;
 }
 
+body a, body a:hover {
+    color: blue;
+}
+
 .root-ui {
     height: 100vh;
     display: flex;
@@ -13,8 +17,10 @@ body {
 .top-bar {
     align-items: center;
     display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
     justify-content: space-between;
-    height: 45px;
+    flex-basis: 45px;
     background-color: #fff6de;
     border-bottom: 1px solid #A0A0A0;
 }
@@ -52,19 +58,15 @@ body {
 .main-content {
     flex-grow: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .empty-input-content {
     margin-bottom: 80px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.logo-wrapper {
-    display: flex;
-    justify-content: center;
 }
 
 .ts-logo {

@@ -65,13 +65,15 @@ var RootUI = React.createClass({
                 </div>
                 <div className="main-content">
                     {this.props.data.q
-                        ? <SearchResults
-                            results={this.props.data.results}
-                            q={this.props.data.q}
-                            cs={this.props.data.cs}
-                            ww={this.props.data.ww}
-                            prefix={this.props.data.prefix}
-                        />
+                        ? <div className="search-result-content">
+                            <SearchResults
+                                results={this.props.data.results}
+                                q={this.props.data.q}
+                                cs={this.props.data.cs}
+                                ww={this.props.data.ww}
+                                prefix={this.props.data.prefix}
+                            />
+                        </div>
                         :
                         <div className="empty-input-content">
                             <div className="logo-wrapper"><img className="ts-logo" src="logo.png"/></div>
