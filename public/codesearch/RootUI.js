@@ -8,9 +8,7 @@ var SearchResults = require('./SearchResults');
 
 var RootUI = React.createClass({
     componentDidMount: function () {
-        if (!this.props.data.q) {
-            this.refs.queryInput.focus();
-        }
+        this.refs.queryInput.focus();
     },
 
     _onQueryChange: function (event) {
