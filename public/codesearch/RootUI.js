@@ -9,6 +9,10 @@ var SearchResults = require('./SearchResults');
 var RootUI = React.createClass({
     componentDidMount: function () {
         this.refs.queryInput.focus();
+        this.refs.queryInput.setSelectionRange(
+            this.refs.queryInput.value.length,
+            this.refs.queryInput.value.length
+        );
     },
 
     _onQueryChange: function (event) {
